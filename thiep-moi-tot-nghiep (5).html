@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thiệp Mời Lễ Tốt Nghiệp</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!--
+    FONT SYSTEM – 3 lớp rõ ràng:
+    1. Great Vibes      → Tiêu đề "Lễ Tốt Nghiệp" & tên sinh viên  (script/cursive, viết tay)
+    2. Cormorant Garamond → Lời mời, lời kết                         (serif thanh tú, lãng mạn)
+    3. DM Sans          → Label, địa điểm, thời gian, footer         (sans-serif sạch, hiện đại)
+  -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============================================================
+       CONFIG – chỉnh ảnh tại đây
+       ============================================================ */
+    :root {
+      --bg-image: url("background.jpg");   /* ← đổi ảnh nền */
+      --avatar-image: url("avatar.jpg");   /* ← đổi ảnh cá nhân */
+
+      /* Màu sắc chủ đạo */
+      --gold:        #c9a84c;
+      --gold-light:  #e8cf82;
+      --gold-pale:   #f5e9c4;
+      --navy:        #1a2340;
+      --cream:       #fdf8f0;
+      --card-bg:     rgba(253, 248, 240, 0.82);
+
+      /* Typography – 3 lớp font */
+      --font-script:  'Great Vibes', cursive;           /* Tiêu đề & tên – viết tay */
+      --font-serif:   'Cormorant Garamond', Georgia, serif; /* Lời mời, lời kết – thanh tú */
+      --font-body:    'DM Sans', sans-serif;             /* Label, info – hiện đại */
+    }
+
+    /* ============================================================
+       RESET & BASE
+       ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      min-height: 100%;
+      font-family: var(--font-body);
+    }
+
+    /* ============================================================
+       BACKGROUND
+       ============================================================ */
+    body {
+      background:
+        linear-gradient(
+          160deg,
+          rgba(26,35,64,0.55) 0%,
+          rgba(26,35,64,0.30) 50%,
+          rgba(201,168,76,0.25) 100%
+        ),
+        var(--bg-image) center center / cover no-repeat fixed;
+
+      /* Fallback khi chưa có ảnh */
+      background-color: var(--navy);
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 32px 16px;
+    }
+
+    /* ============================================================
+       CARD CHÍNH
+       ============================================================ */
+    .card {
+      position: relative;
+      width: 100%;
+      max-width: 500px;
+      background: var(--card-bg);
+      backdrop-filter: blur(18px) saturate(1.4);
+      -webkit-backdrop-filter: blur(18px) saturate(1.4);
+      border-radius: 28px;
+      border: 1px solid rgba(201,168,76,0.35);
+      box-shadow:
+        0 32px 80px rgba(26,35,64,0.35),
+        0 0 0 1px rgba(255,255,255,0.45) inset;
+      overflow: hidden;
+      animation: cardIn 0.9s cubic-bezier(0.22,1,0.36,1) both;
+    }
+
+    @keyframes cardIn {
+      from { opacity: 0; transform: translateY(40px) scale(0.97); }
+      to   { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    /* ============================================================
+       HEADER DẢI VÀNG
+       ============================================================ */
+    .card__header {
+      background: linear-gradient(135deg, var(--navy) 0%, #263266 100%);
+      padding: 36px 32px 24px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Họa tiết trang trí góc */
+    .card__header::before,
+    .card__header::after {
+      content: '';
+      position: absolute;
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(201,168,76,0.18) 0%, transparent 70%);
+    }
+    .card__header::before { top: -40px; left: -40px; }
+    .card__header::after  { bottom: -40px; right: -40px; }
+
+    .ornament {
+      display: block;
+      color: var(--gold);
+      font-size: 10px;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      font-family: var(--font-body);
+      font-weight: 400;
+      opacity: 0.85;
+      margin-bottom: 10px;
+      animation: fadeUp 0.7s 0.3s both;
+    }
+
+    .card__title {
+      font-family: var(--font-script);
+      font-size: clamp(2.2rem, 7vw, 2.8rem);
+      font-weight: 400;
+      color: #fff;
+      line-height: 1.2;
+      letter-spacing: 1px;
+      animation: fadeUp 0.7s 0.4s both;
+    }
+
+    .divider-gold {
+      width: 60px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      margin: 14px auto 0;
+      animation: fadeUp 0.7s 0.5s both;
+    }
+
+    /* ============================================================
+       AVATAR
+       ============================================================ */
+    .avatar-wrap {
+      display: flex;
+      justify-content: center;
+      margin-top: -52px;
+      position: relative;
+      z-index: 2;
+      animation: fadeUp 0.7s 0.55s both;
+    }
+
+    .avatar {
+      width: 104px;
+      height: 104px;
+      border-radius: 50%;
+      background:
+        var(--avatar-image) center center / cover no-repeat,
+        #ddd;          /* placeholder màu nếu chưa có ảnh */
+      border: 4px solid #fff;
+      box-shadow:
+        0 8px 24px rgba(26,35,64,0.25),
+        0 0 0 3px var(--gold-light);
+      transition: transform 0.4s ease;
+    }
+    .avatar:hover { transform: scale(1.05); }
+
+    /* ============================================================
+       BODY CARD
+       ============================================================ */
+    .card__body {
+      padding: 24px 32px 30px;
+      text-align: center;
+    }
+
+    /* Lời mời – Cormorant Garamond thanh tú */
+    .invite-text {
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      font-weight: 300;
+      font-style: italic;
+      color: #4a5568;
+      line-height: 1.8;
+      margin-bottom: 22px;
+      animation: fadeUp 0.7s 0.65s both;
+    }
+
+    /* Tên sinh viên – Great Vibes, viết tay nổi bật */
+    .name {
+      font-family: var(--font-script);
+      font-size: clamp(2rem, 6vw, 2.5rem);
+      font-weight: 400;
+      color: var(--navy);
+      margin-bottom: 6px;
+      animation: fadeUp 0.7s 0.7s both;
+    }
+
+    /* Ngành học */
+    .major {
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 0.85rem;
+      font-weight: 400;
+      font-style: italic;
+      letter-spacing: 1px;
+      color: var(--gold);
+      margin-bottom: 26px;
+      animation: fadeUp 0.7s 0.75s both;
+    }
+
+    /* ============================================================
+       THÔNG TIN THỜI GIAN & ĐỊA ĐIỂM
+       ============================================================ */
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 24px;
+      animation: fadeUp 0.7s 0.8s both;
+    }
+
+    .info-box {
+      background: rgba(201,168,76,0.10);
+      border: 1px solid rgba(201,168,76,0.30);
+      border-radius: 14px;
+      padding: 14px 12px;
+    }
+
+    .info-box .icon {
+      font-size: 1.4rem;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .info-box .label {
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .info-box .value {
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.5;
+    }
+
+    /* Địa điểm – chiếm full width */
+    .info-box--full {
+      grid-column: 1 / -1;
+    }
+
+    /* ============================================================
+       LỜI KẾT
+       ============================================================ */
+    /* Lời kết – Cormorant Garamond, nhẹ nhàng, trữ tình */
+    .closing {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      font-style: italic;
+      font-weight: 300;
+      color: #5a6480;
+      line-height: 1.7;
+      padding: 18px 0 0;
+      border-top: 1px solid rgba(201,168,76,0.25);
+      margin-bottom: 20px;
+      animation: fadeUp 0.7s 0.9s both;
+    }
+
+    /* ============================================================
+       FOOTER LIÊN HỆ
+       ============================================================ */
+    .card__footer {
+      background: linear-gradient(135deg, var(--navy) 0%, #263266 100%);
+      padding: 16px 32px;
+      text-align: center;
+      animation: fadeUp 0.7s 1s both;
+    }
+
+    .footer-label {
+      font-size: 0.7rem;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .footer-phone {
+      font-family: var(--font-body);
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: var(--gold-light);
+      text-decoration: none;
+      letter-spacing: 2px;
+      transition: color 0.2s;
+    }
+    .footer-phone:hover { color: #fff; }
+
+    /* ============================================================
+       ANIMATION HELPER
+       ============================================================ */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ============================================================
+       RESPONSIVE – mobile
+       ============================================================ */
+    @media (max-width: 400px) {
+      .card__header { padding: 28px 20px 20px; }
+      .card__body   { padding: 20px 20px 24px; }
+      .card__footer { padding: 14px 20px; }
+      .info-grid    { grid-template-columns: 1fr; }
+      .info-box--full { grid-column: auto; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ════════════════════════════════════════════
+       THIỆP MỜI – chỉnh nội dung trong thẻ này
+       ════════════════════════════════════════════ -->
+  <article class="card">
+
+    <!-- HEADER -->
+    <header class="card__header">
+      <span class="ornament">✦ Trân trọng kính mời ✦</span>
+      <h1 class="card__title">🎓 Lễ Tốt Nghiệp 🎓</h1>
+      <div class="divider-gold"></div>
+    </header>
+
+    <!-- AVATAR -->
+    <div class="avatar-wrap">
+      <!--
+        Thay đường dẫn avatar tại đây
+        Ví dụ: style="background-image: url('ten-ban.jpg')"
+      -->
+      <div class="avatar" role="img" aria-label="Ảnh sinh viên"></div>
+    </div>
+
+    <!-- NỘI DUNG -->
+    <div class="card__body">
+
+      <p class="invite-text">
+        Trân trọng kính mời bạn đến tham dự<br/>lễ tốt nghiệp của
+      </p>
+
+      <!-- ← Thay tên sinh viên tại đây -->
+      <p class="name">Nguyễn Văn A</p>
+
+      <!-- ← Thay ngành / khoa tại đây -->
+      <p class="major">Khoa Khoa học Máy tính · K65</p>
+
+      <!-- THỜI GIAN & ĐỊA ĐIỂM -->
+      <div class="info-grid">
+
+        <div class="info-box">
+          <span class="icon">🗓</span>
+          <span class="label">Ngày</span>
+          <!-- ← Thay ngày tại đây -->
+          <span class="value">10 / 05 / 2025</span>
+        </div>
+
+        <div class="info-box">
+          <span class="icon">🕑</span>
+          <span class="label">Giờ</span>
+          <!-- ← Thay giờ tại đây -->
+          <span class="value">14:00 – 17:30</span>
+        </div>
+
+        <div class="info-box info-box--full">
+          <span class="icon">📍</span>
+          <span class="label">Địa điểm</span>
+          <!-- ← Thay địa điểm tại đây -->
+          <span class="value">Thư viện Tạ Quang Bửu<br/>Đại học Bách Khoa Hà Nội</span>
+        </div>
+
+      </div>
+
+      <!-- LỜI KẾT -->
+      <p class="closing">
+        "Sự hiện diện của bạn là niềm vinh hạnh lớn."
+      </p>
+
+    </div>
+
+    <!-- FOOTER – LIÊN HỆ -->
+    <footer class="card__footer">
+      <span class="footer-label">Liên hệ</span>
+      <!-- ← Thay số điện thoại tại đây -->
+      <a href="tel:0912345678" class="footer-phone">0912 345 678</a>
+    </footer>
+
+  </article>
+
+  <!-- ════════════════════════════════════════════
+       RSVP POPUP
+       ════════════════════════════════════════════ -->
+
+  <!-- Nút mở popup (hiện sau 1.5s) -->
+  <button id="rsvp-trigger" onclick="document.getElementById('rsvp-overlay').style.display='flex'" style="
+    position: fixed; bottom: 28px; right: 28px;
+    background: linear-gradient(135deg, #1a2340, #263266);
+    color: #e8cf82;
+    border: 1.5px solid #c9a84c;
+    border-radius: 50px;
+    padding: 12px 22px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    cursor: pointer;
+    box-shadow: 0 8px 24px rgba(26,35,64,0.4);
+    opacity: 0;
+    transition: opacity 0.5s, transform 0.2s;
+    z-index: 999;
+  ">✉ Xác nhận tham dự</button>
+
+  <!-- Overlay -->
+  <div id="rsvp-overlay" style="
+    display: none;
+    position: fixed; inset: 0;
+    background: rgba(10,15,35,0.65);
+    backdrop-filter: blur(6px);
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 20px;
+  ">
+    <!-- Popup card -->
+    <div id="rsvp-card" style="
+      background: #fdf8f0;
+      border-radius: 24px;
+      border: 1px solid rgba(201,168,76,0.4);
+      box-shadow: 0 32px 80px rgba(26,35,64,0.35);
+      padding: 36px 32px 28px;
+      max-width: 360px;
+      width: 100%;
+      text-align: center;
+      position: relative;
+      animation: cardIn 0.4s cubic-bezier(0.22,1,0.36,1) both;
+    ">
+      <!-- Màn chính: câu hỏi -->
+      <div id="rsvp-question">
+        <div style="font-size: 2.4rem; margin-bottom: 12px;">🎓</div>
+        <p style="
+          font-family: 'Cormorant Garamond', serif;
+          font-size: 1.35rem;
+          font-style: italic;
+          font-weight: 400;
+          color: #1a2340;
+          line-height: 1.5;
+          margin-bottom: 8px;
+        ">Bạn có tham dự lễ tốt nghiệp không?</p>
+        <p style="
+          font-family: 'DM Sans', sans-serif;
+          font-size: 0.8rem;
+          color: #8a94a8;
+          margin-bottom: 28px;
+          letter-spacing: 0.5px;
+        ">Sự có mặt của bạn rất quan trọng 🥺</p>
+
+        <div style="display: flex; gap: 12px; justify-content: center; position: relative;">
+          <!-- Nút CÓ -->
+          <button onclick="showYes()" style="
+            background: linear-gradient(135deg, #1a2340, #263266);
+            color: #e8cf82;
+            border: none;
+            border-radius: 50px;
+            padding: 13px 32px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            letter-spacing: 0.5px;
+            transition: transform 0.15s;
+          " onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+            ✅ Có, mình sẽ đến!
+          </button>
+
+          <!-- Nút KHÔNG – troll -->
+          <button id="btn-no" style="
+            background: #fff;
+            color: #8a94a8;
+            border: 1.5px solid #d0d5e0;
+            border-radius: 50px;
+            padding: 13px 24px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: left 0.12s ease, top 0.12s ease, opacity 0.3s ease;
+            position: relative;
+          ">
+            Không
+          </button>
+        </div>
+
+        <!-- Thông báo nhỏ khi hover/click nhiều -->
+        <p id="troll-msg" style="
+          font-family: 'Cormorant Garamond', serif;
+          font-style: italic;
+          font-size: 0.9rem;
+          color: #c9a84c;
+          margin-top: 16px;
+          min-height: 22px;
+          transition: opacity 0.3s;
+          opacity: 0;
+        "></p>
+      </div>
+
+      <!-- Màn "Cảm ơn" sau khi chọn CÓ -->
+      <div id="rsvp-yes" style="display:none;">
+        <div style="font-size: 3rem; margin-bottom: 16px; animation: popIn 0.5s both;">🎉</div>
+        <p style="
+          font-family: 'Great Vibes', cursive;
+          font-size: 2rem;
+          color: #1a2340;
+          margin-bottom: 10px;
+        ">Cảm ơn bạn!</p>
+        <p style="
+          font-family: 'Cormorant Garamond', serif;
+          font-size: 1.05rem;
+          font-style: italic;
+          color: #5a6480;
+          line-height: 1.7;
+          margin-bottom: 24px;
+        ">Tuyệt vời! Mình rất vui khi biết bạn sẽ đến.<br/>Hẹn gặp lại ngày <strong style="color:#1a2340; font-style:normal;">10/05</strong> nhé 🥳</p>
+        <button onclick="closePopup()" style="
+          background: linear-gradient(135deg, #c9a84c, #e8cf82);
+          color: #1a2340;
+          border: none;
+          border-radius: 50px;
+          padding: 11px 28px;
+          font-family: 'DM Sans', sans-serif;
+          font-weight: 600;
+          font-size: 0.9rem;
+          cursor: pointer;
+        ">Đóng ✨</button>
+      </div>
+
+      <!-- Màn "Thôi được rồi" sau khi cố chọn KHÔNG quá nhiều -->
+      <div id="rsvp-surrender" style="display:none;">
+        <div style="font-size: 3rem; margin-bottom: 16px;">😮‍💨</div>
+        <p style="
+          font-family: 'Great Vibes', cursive;
+          font-size: 1.9rem;
+          color: #1a2340;
+          margin-bottom: 10px;
+        ">Thôi được rồi...</p>
+        <p style="
+          font-family: 'Cormorant Garamond', serif;
+          font-size: 1.05rem;
+          font-style: italic;
+          color: #5a6480;
+          line-height: 1.7;
+          margin-bottom: 24px;
+        ">Mình hiểu rồi 😔<br/>Dù sao cũng cảm ơn vì đã đọc thiệp.<br/>Nhớ mình nha! 🥹</p>
+        <button onclick="closePopup()" style="
+          background: #f0f2f8;
+          color: #5a6480;
+          border: 1.5px solid #d0d5e0;
+          border-radius: 50px;
+          padding: 11px 28px;
+          font-family: 'DM Sans', sans-serif;
+          font-weight: 500;
+          font-size: 0.9rem;
+          cursor: pointer;
+        ">Đóng</button>
+      </div>
+
+    </div>
+  </div>
+
+
+  <style>
+    @keyframes popIn {
+      from { transform: scale(0.5); opacity: 0; }
+      to   { transform: scale(1);   opacity: 1; }
+    }
+
+    /* ── Mobile: popup full-width, trigger button nhỏ hơn ── */
+    @media (max-width: 480px) {
+      #rsvp-overlay {
+        align-items: flex-end !important; /* popup trượt lên từ đáy */
+        padding: 0 !important;
+      }
+      #rsvp-card {
+        border-radius: 24px 24px 0 0 !important;
+        padding: 28px 20px 36px !important;
+        max-width: 100% !important;
+        width: 100% !important;
+      }
+      #rsvp-trigger {
+        bottom: 16px !important;
+        right: 16px !important;
+        padding: 10px 18px !important;
+        font-size: 0.82rem !important;
+      }
+      /* Nút CÓ / KHÔNG stack dọc trên màn nhỏ */
+      #rsvp-question > div[style*="flex"] {
+        flex-direction: column !important;
+        align-items: stretch !important;
+      }
+    }
+  </style>
+
+  <script>
+    // ── Hiện nút trigger sau 1.5s ──────────────────────────────
+    setTimeout(() => {
+      document.getElementById('rsvp-trigger').style.opacity = '1';
+    }, 1500);
+
+    // ── State ──────────────────────────────────────────────────
+    const btn = document.getElementById('btn-no');
+    let noCount    = 0;
+    let isFloating = false;
+    let isCooling  = false;
+
+    const trollMessages = [
+      '🤔 Sao khó bấm vậy nhỉ?',
+      '😅 Cứ thử đi, mình chờ...',
+      '👀 Kiên trì dữ vậy trời!',
+      '🥺 Mình buồn lắm đó...',
+      '😂 Vẫn chưa bỏ cuộc à...',
+    ];
+
+    // ── Fade-swap message ──────────────────────────────────────
+    function showMsg(txt) {
+      const msg = document.getElementById('troll-msg');
+      msg.style.opacity = '0';
+      setTimeout(() => {
+        msg.textContent  = txt;
+        msg.style.opacity = txt ? '1' : '0';
+      }, 150);
+    }
+
+    // ── Vị trí ngẫu nhiên, đảm bảo LUÔN trong viewport ────────
+    function randomPos() {
+      const margin = 24;
+      // Đo kích thước nút sau khi đã fixed (có thể khác lúc còn trong card)
+      const bw = btn.offsetWidth  || 100;
+      const bh = btn.offsetHeight || 44;
+      const vw = window.innerWidth;
+      const vh = window.innerHeight;
+
+      const maxLeft = vw - bw - margin;
+      const maxTop  = vh - bh - margin;
+
+      // Clamp để không bao giờ âm hoặc vượt quá màn hình
+      const left = Math.max(margin, Math.min(maxLeft, Math.random() * maxLeft));
+      const top  = Math.max(margin, Math.min(maxTop,  Math.random() * maxTop));
+
+      return { left, top };
+    }
+
+    // ── Ghim nút tại đúng vị trí hiện tại rồi animate sang chỗ mới
+    function teleportBtn() {
+      if (!isFloating) {
+        const rect = btn.getBoundingClientRect();
+        btn.style.transition = 'none';
+        btn.style.position   = 'fixed';
+        btn.style.margin     = '0';
+        btn.style.left       = rect.left + 'px';
+        btn.style.top        = rect.top  + 'px';
+        btn.style.zIndex     = '1100';
+        btn.style.width      = btn.offsetWidth + 'px'; // giữ width khi fixed
+        btn.getBoundingClientRect(); // force reflow
+        isFloating = true;
+      }
+      // Bouncy transition
+      btn.style.transition = 'left 0.28s cubic-bezier(0.34,1.56,0.64,1), top 0.28s cubic-bezier(0.34,1.56,0.64,1)';
+      const pos = randomPos();
+      btn.style.left = pos.left + 'px';
+      btn.style.top  = pos.top  + 'px';
+    }
+
+    // ── Biến mất ───────────────────────────────────────────────
+    function vanishNoBtn() {
+      btn.style.transition    = 'opacity 0.3s ease, transform 0.3s ease';
+      btn.style.opacity       = '0';
+      btn.style.transform     = 'scale(0.4)';
+      btn.style.pointerEvents = 'none';
+      setTimeout(() => { btn.style.display = 'none'; }, 320);
+      showMsg('😂 Nút đó biến mất rồi... Chỉ còn một lựa chọn thôi!');
+    }
+
+    // ── Logic chính ────────────────────────────────────────────
+    function trollAction() {
+      if (isCooling) return;
+      isCooling = true;
+      setTimeout(() => { isCooling = false; }, 350);
+
+      noCount++;
+
+      if (noCount >= 5 && Math.random() < 0.4) {
+        vanishNoBtn();
+        return;
+      }
+
+      teleportBtn();
+      const idx = Math.min(noCount - 1, trollMessages.length - 1);
+      showMsg(trollMessages[idx]);
+    }
+
+    // ── Desktop: click (lần 1-2) + hover (lần 3+) ─────────────
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      trollAction();
+    });
+
+    btn.addEventListener('mouseenter', () => {
+      if (noCount >= 2) trollAction();
+    });
+
+    // ── Mobile: touchstart thay cho hover ─────────────────────
+    btn.addEventListener('touchstart', (e) => {
+      e.preventDefault(); // chặn click synthetic theo sau
+      trollAction();
+    }, { passive: false });
+
+    // ── Màn CÓ ────────────────────────────────────────────────
+    function showYes() {
+      document.getElementById('rsvp-question').style.display = 'none';
+      document.getElementById('rsvp-yes').style.display      = 'block';
+      resetBtn();
+    }
+
+    // ── Reset hoàn toàn ────────────────────────────────────────
+    function resetBtn() {
+      btn.removeAttribute('style');
+      // Áp lại style gốc
+      Object.assign(btn.style, {
+        background:   '#fff',
+        color:        '#8a94a8',
+        border:       '1.5px solid #d0d5e0',
+        borderRadius: '50px',
+        padding:      '13px 24px',
+        fontFamily:   "'DM Sans', sans-serif",
+        fontSize:     '0.95rem',
+        fontWeight:   '500',
+        cursor:       'pointer',
+        position:     'relative',
+        transition:   'opacity 0.3s ease',
+        display:      '',
+        opacity:      '1',
+      });
+      isFloating = false;
+      noCount    = 0;
+      isCooling  = false;
+    }
+
+    // ── Đóng popup ────────────────────────────────────────────
+    function closePopup() {
+      document.getElementById('rsvp-overlay').style.display  = 'none';
+      document.getElementById('rsvp-question').style.display = 'block';
+      document.getElementById('rsvp-yes').style.display      = 'none';
+      document.getElementById('rsvp-surrender').style.display= 'none';
+      resetBtn();
+      showMsg('');
+    }
+  </script>
+
+</body>
+</html>
