@@ -363,10 +363,10 @@
       </p>
 
       <!-- ← Thay tên sinh viên tại đây -->
-      <p class="name">Nguyễn Văn A</p>
+      <p class="name">Lê Hà Phi</p>
 
       <!-- ← Thay ngành / khoa tại đây -->
-      <p class="major">Khoa Khoa học Máy tính · K65</p>
+      <p class="major">Khoa Khoa học Máy tính · IT1 - 02 K66</p>
 
       <!-- THỜI GIAN & ĐỊA ĐIỂM -->
       <div class="info-grid">
@@ -380,7 +380,7 @@
 
         <div class="info-box">
           <span class="icon">🕑</span>
-          <span class="label">Giờ</span>
+          <span class="label">Thời gian</span>
           <!-- ← Thay giờ tại đây -->
           <span class="value">14:00 – 17:30</span>
         </div>
@@ -630,16 +630,24 @@
 
     // ── State ──────────────────────────────────────────────────
     const btn = document.getElementById('btn-no');
-    let noCount    = 0;
-    let isFloating = false;
-    let isCooling  = false;
 
-    const trollMessages = [
-      '🤔 Sao khó bấm vậy nhỉ?',
+    let clickCount  = 0;    // số lần click (chỉ đếm đến 2)
+    let hoverCount  = 0;    // số lần hover (đếm từ khi vào hover mode)
+    let phase       = 'click'; // 'click' | 'hover'
+    let isFloating  = false;
+    let isCooling   = false;
+
+    // Messages thay đổi theo hoverCount
+    const hoverMessages = [
+      '😏 Nhanh tay lên nào...',
+      '🤔 Sao khó bắt vậy nhỉ?',
       '😅 Cứ thử đi, mình chờ...',
       '👀 Kiên trì dữ vậy trời!',
+      '🥵 Mệt chưa?',
       '🥺 Mình buồn lắm đó...',
       '😂 Vẫn chưa bỏ cuộc à...',
+      '🫣 Thôi tha cho mình đi...',
+      '💀 Bạn... ổn không?',
     ];
 
     // ── Fade-swap message ──────────────────────────────────────
@@ -652,41 +660,53 @@
       }, 150);
     }
 
-    // ── Vị trí ngẫu nhiên, đảm bảo LUÔN trong viewport ────────
-    function randomPos() {
-      const margin = 24;
-      // Đo kích thước nút sau khi đã fixed (có thể khác lúc còn trong card)
-      const bw = btn.offsetWidth  || 100;
-      const bh = btn.offsetHeight || 44;
-      const vw = window.innerWidth;
-      const vh = window.innerHeight;
-
-      const maxLeft = vw - bw - margin;
-      const maxTop  = vh - bh - margin;
-
-      // Clamp để không bao giờ âm hoặc vượt quá màn hình
-      const left = Math.max(margin, Math.min(maxLeft, Math.random() * maxLeft));
-      const top  = Math.max(margin, Math.min(maxTop,  Math.random() * maxTop));
-
-      return { left, top };
+    // ── Wobble animation (click lần 1) ─────────────────────────
+    function wobbleBtn() {
+      btn.style.transition = 'transform 0.1s ease';
+      const wobbles = [
+        { deg: -8, x: -4 }, { deg: 8, x: 4 },
+        { deg: -6, x: -3 }, { deg: 6, x: 3 },
+        { deg: 0,  x:  0 },
+      ];
+      let i = 0;
+      const tick = () => {
+        if (i >= wobbles.length) { btn.style.transform = ''; return; }
+        const w = wobbles[i++];
+        btn.style.transform = `rotate(${w.deg}deg) translateX(${w.x}px)`;
+        setTimeout(tick, 80);
+      };
+      tick();
+      showMsg('😏 Ủa? Bấm được không vậy?');
     }
 
-    // ── Ghim nút tại đúng vị trí hiện tại rồi animate sang chỗ mới
+    // ── Vị trí ngẫu nhiên trong viewport ──────────────────────
+    function randomPos() {
+      const margin = 24;
+      const bw = btn.offsetWidth  || 100;
+      const bh = btn.offsetHeight || 44;
+      const maxLeft = window.innerWidth  - bw - margin;
+      const maxTop  = window.innerHeight - bh - margin;
+      return {
+        left: Math.max(margin, Math.min(maxLeft, Math.random() * maxLeft)),
+        top : Math.max(margin, Math.min(maxTop,  Math.random() * maxTop)),
+      };
+    }
+
+    // ── Ghim fixed tại chỗ cũ rồi bay sang chỗ mới ────────────
     function teleportBtn() {
       if (!isFloating) {
         const rect = btn.getBoundingClientRect();
         btn.style.transition = 'none';
         btn.style.position   = 'fixed';
         btn.style.margin     = '0';
+        btn.style.width      = btn.offsetWidth + 'px';
         btn.style.left       = rect.left + 'px';
         btn.style.top        = rect.top  + 'px';
         btn.style.zIndex     = '1100';
-        btn.style.width      = btn.offsetWidth + 'px'; // giữ width khi fixed
         btn.getBoundingClientRect(); // force reflow
         isFloating = true;
       }
-      // Bouncy transition
-      btn.style.transition = 'left 0.28s cubic-bezier(0.34,1.56,0.64,1), top 0.28s cubic-bezier(0.34,1.56,0.64,1)';
+      btn.style.transition = 'left 0.22s cubic-bezier(0.34,1.56,0.64,1), top 0.22s cubic-bezier(0.34,1.56,0.64,1)';
       const pos = randomPos();
       btn.style.left = pos.left + 'px';
       btn.style.top  = pos.top  + 'px';
@@ -696,44 +716,87 @@
     function vanishNoBtn() {
       btn.style.transition    = 'opacity 0.3s ease, transform 0.3s ease';
       btn.style.opacity       = '0';
-      btn.style.transform     = 'scale(0.4)';
+      btn.style.transform     = 'scale(0.3)';
       btn.style.pointerEvents = 'none';
-      setTimeout(() => { btn.style.display = 'none'; }, 320);
-      showMsg('😂 Nút đó biến mất rồi... Chỉ còn một lựa chọn thôi!');
+      setTimeout(() => { btn.style.display = 'none'; }, 350);
+      showMsg('😂 Biến mất rồi! Chỉ còn một lựa chọn thôi...');
     }
 
-    // ── Logic chính ────────────────────────────────────────────
-    function trollAction() {
+    // ── Xử lý CLICK ───────────────────────────────────────────
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (phase !== 'click') return; // đã sang hover mode, click không làm gì thêm
+
+      clickCount++;
+
+      if (clickCount === 1) {
+        // Lần 1: chỉ wobble, không di chuyển
+        wobbleBtn();
+      } else if (clickCount >= 2) {
+        // Lần 2: bay lần đầu, chuyển sang hover mode
+        teleportBtn();
+        showMsg('🏃 Bắt được thì bấm nha!');
+        phase = 'hover'; // từ giờ hover là chạy
+      }
+    });
+
+    // ── Xử lý HOVER (chỉ active sau khi vào hover mode) ───────
+    btn.addEventListener('mouseenter', () => {
+      if (phase !== 'hover') return;
       if (isCooling) return;
       isCooling = true;
-      setTimeout(() => { isCooling = false; }, 350);
+      setTimeout(() => { isCooling = false; }, 280);
 
-      noCount++;
+      hoverCount++;
 
-      if (noCount >= 5 && Math.random() < 0.4) {
-        vanishNoBtn();
-        return;
+      // Từ hover lần 15: tăng dần xác suất biến mất
+      if (hoverCount >= 15) {
+        // Xác suất tăng dần: lần 15 = 20%, lần 20 = 45%, lần 25+ = 70%
+        const chance = Math.min(0.7, 0.2 + (hoverCount - 15) * 0.05);
+        if (Math.random() < chance) {
+          vanishNoBtn();
+          return;
+        }
       }
 
       teleportBtn();
-      const idx = Math.min(noCount - 1, trollMessages.length - 1);
-      showMsg(trollMessages[idx]);
-    }
 
-    // ── Desktop: click (lần 1-2) + hover (lần 3+) ─────────────
-    btn.addEventListener('click', (e) => {
-      e.preventDefault();
-      trollAction();
+      // Chọn message theo hoverCount
+      const idx = Math.min(
+        Math.floor(hoverCount / 2),
+        hoverMessages.length - 1
+      );
+      showMsg(hoverMessages[idx]);
     });
 
-    btn.addEventListener('mouseenter', () => {
-      if (noCount >= 2) trollAction();
-    });
-
-    // ── Mobile: touchstart thay cho hover ─────────────────────
+    // ── Mobile: touchstart ─────────────────────────────────────
     btn.addEventListener('touchstart', (e) => {
-      e.preventDefault(); // chặn click synthetic theo sau
-      trollAction();
+      e.preventDefault();
+      if (phase === 'click') {
+        // Trên mobile: touch = click
+        clickCount++;
+        if (clickCount === 1) {
+          wobbleBtn();
+        } else if (clickCount >= 2) {
+          teleportBtn();
+          showMsg('🏃 Bắt được thì bấm nha!');
+          phase = 'hover';
+        }
+      } else {
+        // Hover mode trên mobile = mỗi lần chạm
+        if (isCooling) return;
+        isCooling = true;
+        setTimeout(() => { isCooling = false; }, 280);
+
+        hoverCount++;
+        if (hoverCount >= 15) {
+          const chance = Math.min(0.7, 0.2 + (hoverCount - 15) * 0.05);
+          if (Math.random() < chance) { vanishNoBtn(); return; }
+        }
+        teleportBtn();
+        const idx = Math.min(Math.floor(hoverCount / 2), hoverMessages.length - 1);
+        showMsg(hoverMessages[idx]);
+      }
     }, { passive: false });
 
     // ── Màn CÓ ────────────────────────────────────────────────
@@ -746,7 +809,6 @@
     // ── Reset hoàn toàn ────────────────────────────────────────
     function resetBtn() {
       btn.removeAttribute('style');
-      // Áp lại style gốc
       Object.assign(btn.style, {
         background:   '#fff',
         color:        '#8a94a8',
@@ -762,9 +824,11 @@
         display:      '',
         opacity:      '1',
       });
-      isFloating = false;
-      noCount    = 0;
-      isCooling  = false;
+      clickCount  = 0;
+      hoverCount  = 0;
+      phase       = 'click';
+      isFloating  = false;
+      isCooling   = false;
     }
 
     // ── Đóng popup ────────────────────────────────────────────
