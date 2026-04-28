@@ -34,267 +34,266 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: clamp(16px, 4vw, 48px) clamp(12px, 4vw, 24px);
+      padding: clamp(16px,4vw,48px) clamp(12px,4vw,24px);
     }
 
-    /* ── CARD ── */
     .card {
       width: min(500px, 100%);
       background: var(--card-bg);
       backdrop-filter: blur(18px) saturate(1.4);
       -webkit-backdrop-filter: blur(18px) saturate(1.4);
-      border-radius: clamp(16px, 4vw, 28px);
+      border-radius: clamp(16px,4vw,28px);
       border: 1px solid rgba(201,168,76,0.35);
       box-shadow: 0 32px 80px rgba(26,35,64,0.35), 0 0 0 1px rgba(255,255,255,0.45) inset;
       overflow: hidden;
       animation: cardIn 0.9s cubic-bezier(0.22,1,0.36,1) both;
     }
     @keyframes cardIn {
-      from { opacity: 0; transform: translateY(40px) scale(0.97); }
-      to   { opacity: 1; transform: translateY(0) scale(1); }
+      from { opacity:0; transform:translateY(40px) scale(0.97); }
+      to   { opacity:1; transform:translateY(0) scale(1); }
     }
 
-    /* ── HEADER ── */
     .card__header {
-      background: linear-gradient(135deg, var(--navy) 0%, #263266 100%);
+      background: linear-gradient(135deg,var(--navy) 0%,#263266 100%);
       padding: clamp(20px,5vw,36px) clamp(20px,6vw,32px) clamp(16px,4vw,24px);
-      text-align: center;
-      position: relative;
-      overflow: hidden;
+      text-align: center; position: relative; overflow: hidden;
     }
-    .card__header::before, .card__header::after {
-      content: '';
-      position: absolute;
-      width: 120px; height: 120px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(201,168,76,0.18) 0%, transparent 70%);
+    .card__header::before,.card__header::after {
+      content:''; position:absolute; width:120px; height:120px; border-radius:50%;
+      background:radial-gradient(circle,rgba(201,168,76,0.18) 0%,transparent 70%);
     }
-    .card__header::before { top: -40px; left: -40px; }
-    .card__header::after  { bottom: -40px; right: -40px; }
+    .card__header::before{top:-40px;left:-40px;}
+    .card__header::after{bottom:-40px;right:-40px;}
 
     .ornament {
-      display: block; color: var(--gold);
-      font-size: clamp(8px,2vw,10px); letter-spacing: 5px;
-      text-transform: uppercase; font-weight: 400; opacity: 0.85;
-      margin-bottom: 10px; animation: fadeUp 0.7s 0.3s both;
+      display:block; color:var(--gold); font-size:clamp(8px,2vw,10px);
+      letter-spacing:5px; text-transform:uppercase; font-weight:400;
+      opacity:0.85; margin-bottom:10px; animation:fadeUp 0.7s 0.3s both;
     }
     .card__title {
-      font-family: var(--font-script);
-      font-size: clamp(1.8rem,8vw,2.8rem);
-      color: #fff; line-height: 1.2;
-      animation: fadeUp 0.7s 0.4s both;
+      font-family:var(--font-script); font-size:clamp(1.8rem,8vw,2.8rem);
+      color:#fff; line-height:1.2; animation:fadeUp 0.7s 0.4s both;
     }
     .divider-gold {
-      width: 60px; height: 2px;
-      background: linear-gradient(90deg, transparent, var(--gold), transparent);
-      margin: 14px auto 0; animation: fadeUp 0.7s 0.5s both;
+      width:60px; height:2px;
+      background:linear-gradient(90deg,transparent,var(--gold),transparent);
+      margin:14px auto 0; animation:fadeUp 0.7s 0.5s both;
     }
 
-    /* ── AVATAR ── */
     .avatar-wrap {
-      display: flex; justify-content: center;
-      margin-top: -52px; position: relative; z-index: 2;
-      animation: fadeUp 0.7s 0.55s both;
+      display:flex; justify-content:center;
+      margin-top:-52px; position:relative; z-index:2;
+      animation:fadeUp 0.7s 0.55s both;
     }
     .avatar {
-      width: clamp(80px,20vw,104px); height: clamp(80px,20vw,104px);
-      border-radius: 50%;
-      background: var(--avatar-image) center/cover no-repeat, #ddd;
-      border: 4px solid #fff;
-      box-shadow: 0 8px 24px rgba(26,35,64,0.25), 0 0 0 3px var(--gold-light);
-      transition: transform 0.4s;
+      width:clamp(80px,20vw,104px); height:clamp(80px,20vw,104px);
+      border-radius:50%;
+      background:var(--avatar-image) center/cover no-repeat,#ddd;
+      border:4px solid #fff;
+      box-shadow:0 8px 24px rgba(26,35,64,0.25),0 0 0 3px var(--gold-light);
+      transition:transform 0.4s;
     }
-    .avatar:hover { transform: scale(1.05); }
+    .avatar:hover{transform:scale(1.05);}
 
-    /* ── BODY ── */
     .card__body {
-      padding: clamp(16px,5vw,24px) clamp(16px,6vw,32px) clamp(20px,5vw,30px);
-      text-align: center;
+      padding:clamp(16px,5vw,24px) clamp(16px,6vw,32px) clamp(20px,5vw,30px);
+      text-align:center;
     }
     .invite-text {
-      font-family: var(--font-serif);
-      font-size: clamp(0.95rem,3vw,1.1rem); font-style: italic; font-weight: 300;
-      color: #4a5568; line-height: 1.8; margin-bottom: 22px;
-      animation: fadeUp 0.7s 0.65s both;
+      font-family:var(--font-serif); font-size:clamp(0.95rem,3vw,1.1rem);
+      font-style:italic; font-weight:300; color:#4a5568; line-height:1.8;
+      margin-bottom:22px; animation:fadeUp 0.7s 0.65s both;
     }
     .name {
-      font-family: var(--font-script); font-size: clamp(1.7rem,7vw,2.5rem);
-      color: var(--navy); margin-bottom: 6px; animation: fadeUp 0.7s 0.7s both;
+      font-family:var(--font-script); font-size:clamp(1.7rem,7vw,2.5rem);
+      color:var(--navy); margin-bottom:6px; animation:fadeUp 0.7s 0.7s both;
     }
     .major {
-      font-family: 'Times New Roman', serif; font-size: clamp(0.75rem,2.5vw,0.85rem);
-      font-style: italic; letter-spacing: 1px; color: var(--gold);
-      margin-bottom: 26px; animation: fadeUp 0.7s 0.75s both;
+      font-family:'Times New Roman',serif; font-size:clamp(0.75rem,2.5vw,0.85rem);
+      font-style:italic; letter-spacing:1px; color:var(--gold);
+      margin-bottom:26px; animation:fadeUp 0.7s 0.75s both;
     }
     .info-grid {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: clamp(8px,2vw,14px); margin-bottom: 24px;
-      animation: fadeUp 0.7s 0.8s both;
+      display:grid; grid-template-columns:1fr 1fr;
+      gap:clamp(8px,2vw,14px); margin-bottom:24px;
+      animation:fadeUp 0.7s 0.8s both;
     }
     .info-box {
-      background: rgba(201,168,76,0.10); border: 1px solid rgba(201,168,76,0.30);
-      border-radius: 14px; padding: clamp(10px,3vw,14px) clamp(8px,2vw,12px);
+      background:rgba(201,168,76,0.10); border:1px solid rgba(201,168,76,0.30);
+      border-radius:14px; padding:clamp(10px,3vw,14px) clamp(8px,2vw,12px);
     }
-    .info-box .icon  { font-size: clamp(1.1rem,3.5vw,1.4rem); display: block; margin-bottom: 6px; }
+    .info-box .icon  {font-size:clamp(1.1rem,3.5vw,1.4rem);display:block;margin-bottom:6px;}
     .info-box .label {
-      font-family: 'Times New Roman', serif; font-size: clamp(0.62rem,1.8vw,0.7rem);
-      font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
-      color: var(--gold); display: block; margin-bottom: 4px;
+      font-family:'Times New Roman',serif; font-size:clamp(0.62rem,1.8vw,0.7rem);
+      font-weight:700; letter-spacing:2px; text-transform:uppercase;
+      color:var(--gold); display:block; margin-bottom:4px;
     }
     .info-box .value {
-      font-family: 'Times New Roman', serif; font-size: clamp(0.85rem,2.5vw,1rem);
-      font-weight: 700; color: var(--navy); line-height: 1.5;
+      font-family:'Times New Roman',serif; font-size:clamp(0.85rem,2.5vw,1rem);
+      font-weight:700; color:var(--navy); line-height:1.5;
     }
-    .info-box--full { grid-column: 1 / -1; }
+    .info-box--full{grid-column:1/-1;}
 
     .closing {
-      font-family: var(--font-serif); font-size: clamp(1rem,3vw,1.15rem);
-      font-style: italic; font-weight: 300; color: #5a6480; line-height: 1.7;
-      padding: 18px 0 0; border-top: 1px solid rgba(201,168,76,0.25);
-      margin-bottom: 20px; animation: fadeUp 0.7s 0.9s both;
+      font-family:var(--font-serif); font-size:clamp(1rem,3vw,1.15rem);
+      font-style:italic; font-weight:300; color:#5a6480; line-height:1.7;
+      padding:18px 0 0; border-top:1px solid rgba(201,168,76,0.25);
+      margin-bottom:20px; animation:fadeUp 0.7s 0.9s both;
     }
 
-    /* ── FOOTER ── */
     .card__footer {
-      background: linear-gradient(135deg, var(--navy) 0%, #263266 100%);
-      padding: clamp(12px,3vw,16px) clamp(20px,6vw,32px);
-      text-align: center; animation: fadeUp 0.7s 1s both;
+      background:linear-gradient(135deg,var(--navy) 0%,#263266 100%);
+      padding:clamp(12px,3vw,16px) clamp(20px,6vw,32px);
+      text-align:center; animation:fadeUp 0.7s 1s both;
     }
     .footer-label {
-      font-size: clamp(0.62rem,1.8vw,0.7rem); letter-spacing: 2.5px;
-      text-transform: uppercase; color: rgba(255,255,255,0.55);
-      display: block; margin-bottom: 6px;
+      font-size:clamp(0.62rem,1.8vw,0.7rem); letter-spacing:2.5px;
+      text-transform:uppercase; color:rgba(255,255,255,0.55);
+      display:block; margin-bottom:6px;
     }
     .footer-phone {
-      font-size: clamp(0.95rem,3vw,1.1rem); font-weight: 500;
-      color: var(--gold-light); text-decoration: none;
-      letter-spacing: 2px; transition: color 0.2s;
+      font-size:clamp(0.95rem,3vw,1.1rem); font-weight:500;
+      color:var(--gold-light); text-decoration:none;
+      letter-spacing:2px; transition:color 0.2s;
     }
-    .footer-phone:hover { color: #fff; }
+    .footer-phone:hover{color:#fff;}
 
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(18px); }
-      to   { opacity: 1; transform: translateY(0); }
+      from{opacity:0;transform:translateY(18px);}
+      to{opacity:1;transform:translateY(0);}
     }
 
     /* ══════════════════════════════════════
-       RSVP
+       RSVP TRIGGER
     ══════════════════════════════════════ */
     #rsvp-trigger {
-      position: fixed;
-      bottom: clamp(16px,4vw,28px); right: clamp(16px,4vw,28px);
-      background: linear-gradient(135deg, #1a2340, #263266);
-      color: #e8cf82; border: 1.5px solid #c9a84c; border-radius: 50px;
-      padding: clamp(9px,2.5vw,12px) clamp(16px,4vw,22px);
-      font-family: 'DM Sans', sans-serif; font-size: clamp(0.78rem,2.5vw,0.88rem);
-      font-weight: 500; letter-spacing: 1px; cursor: pointer;
-      box-shadow: 0 8px 24px rgba(26,35,64,0.4);
-      opacity: 0; transition: opacity 0.5s, transform 0.2s; z-index: 999;
+      position:fixed; bottom:clamp(16px,4vw,28px); right:clamp(16px,4vw,28px);
+      background:linear-gradient(135deg,#1a2340,#263266);
+      color:#e8cf82; border:1.5px solid #c9a84c; border-radius:50px;
+      padding:clamp(9px,2.5vw,12px) clamp(16px,4vw,22px);
+      font-family:'DM Sans',sans-serif; font-size:clamp(0.78rem,2.5vw,0.88rem);
+      font-weight:500; letter-spacing:1px; cursor:pointer;
+      box-shadow:0 8px 24px rgba(26,35,64,0.4);
+      opacity:0; transition:opacity 0.5s,transform 0.2s; z-index:999;
     }
-    #rsvp-trigger:hover { transform: scale(1.05); }
+    #rsvp-trigger:hover{transform:scale(1.05);}
 
+    /* ══════════════════════════════════════
+       OVERLAY
+    ══════════════════════════════════════ */
     #rsvp-overlay {
-      display: none; position: fixed; inset: 0;
-      background: rgba(10,15,35,0.65);
-      backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
-      align-items: center; justify-content: center; z-index: 1000; padding: 20px;
+      display:none; position:fixed; inset:0;
+      background:rgba(10,15,35,0.65);
+      backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px);
+      align-items:center; justify-content:center; z-index:1000; padding:20px;
     }
     #rsvp-card {
-      background: #fdf8f0; border-radius: 24px;
-      border: 1px solid rgba(201,168,76,0.4);
-      box-shadow: 0 32px 80px rgba(26,35,64,0.35);
-      padding: clamp(24px,6vw,36px) clamp(20px,6vw,32px) clamp(20px,5vw,28px);
-      width: min(380px, calc(100vw - 32px));
-      text-align: center; position: relative;
-      animation: cardIn 0.4s cubic-bezier(0.22,1,0.36,1) both;
+      background:#fdf8f0; border-radius:24px;
+      border:1px solid rgba(201,168,76,0.4);
+      box-shadow:0 32px 80px rgba(26,35,64,0.35);
+      padding:clamp(24px,6vw,36px) clamp(20px,6vw,32px) clamp(20px,5vw,28px);
+      width:min(380px,calc(100vw - 32px));
+      text-align:center; position:relative;
+      animation:cardIn 0.4s cubic-bezier(0.22,1,0.36,1) both;
     }
 
-    .rsvp-emoji { font-size: clamp(2rem,6vw,2.4rem); margin-bottom: 12px; }
-    .rsvp-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(1.1rem,4vw,1.35rem); font-style: italic;
-      color: #1a2340; line-height: 1.5; margin-bottom: 8px;
+    .rsvp-emoji{font-size:clamp(2rem,6vw,2.4rem);margin-bottom:12px;}
+    .rsvp-title{
+      font-family:'Cormorant Garamond',serif;
+      font-size:clamp(1.1rem,4vw,1.35rem);font-style:italic;
+      color:#1a2340;line-height:1.5;margin-bottom:8px;
     }
-    .rsvp-sub {
-      font-size: clamp(0.72rem,2.2vw,0.8rem); color: #8a94a8;
-      margin-bottom: 12px; letter-spacing: 0.5px;
+    .rsvp-sub{
+      font-size:clamp(0.72rem,2.2vw,0.8rem);color:#8a94a8;
+      margin-bottom:16px;letter-spacing:0.5px;
     }
 
     /*
-      #btn-arena – khung CỐ ĐỊNH chứa 2 nút.
-      Nút KHÔNG chỉ được phép bay TRONG khung này.
-      overflow: hidden đảm bảo không bao giờ tràn ra ngoài.
+      Layout 2 tầng:
+      - #btn-yes-wrap : hàng cố định ở dưới, luôn hiển thị
+      - #btn-arena    : khung bay của nút KHÔNG, nằm TRÊN nút CÓ
+                        overflow:hidden đảm bảo nút không bao giờ ra ngoài
+    */
+    #btn-yes-wrap {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+
+    #btn-yes {
+      width: 60%;
+      background: linear-gradient(135deg,#1a2340,#263266);
+      color: #e8cf82; border: none; border-radius: 50px;
+      padding: 13px 0;
+      font-family: 'DM Sans',sans-serif; font-size: clamp(0.82rem,2.5vw,0.95rem);
+      font-weight: 600; cursor: pointer; letter-spacing: 0.3px;
+      transition: transform 0.15s, box-shadow 0.15s;
+      white-space: nowrap;
+    }
+    #btn-yes:hover { transform: scale(1.05); box-shadow: 0 6px 20px rgba(26,35,64,0.25); }
+
+    /*
+      #btn-arena: khung nút KHÔNG bay.
+      - Chiều cao lớn hơn để có nhiều chỗ bay hơn
+      - overflow:hidden = nút không bao giờ ra ngoài
+      - pointer-events:none trên bản thân arena (nút bên trong vẫn nhận event)
+      - Nằm TRƯỚC nút CÓ trong DOM → z-index cao hơn tự nhiên
     */
     #btn-arena {
       position: relative;
       width: 100%;
-      height: 110px;          /* đủ cao để nút bay loanh quanh */
-      overflow: hidden;       /* ← chìa khóa: cắt bỏ mọi thứ vượt ra ngoài */
-      border-radius: 12px;
-      margin-bottom: 4px;
+      height: 140px;
+      overflow: hidden;
+      margin-bottom: 10px;
+      /* border: 1px dashed rgba(201,168,76,0.2); */ /* bỏ comment để debug */
     }
 
-    /* Nút CÓ – absolute, góc trái-dưới, luôn cố định */
-    #btn-yes {
-      position: absolute;
-      left: 0; bottom: 0;
-      width: calc(55% - 5px);
-      background: linear-gradient(135deg, #1a2340, #263266);
-      color: #e8cf82; border: none; border-radius: 50px;
-      padding: 13px 0;
-      font-family: 'DM Sans', sans-serif; font-size: clamp(0.78rem,2.5vw,0.9rem);
-      font-weight: 600; cursor: pointer; letter-spacing: 0.3px;
-      transition: transform 0.15s; white-space: nowrap; overflow: hidden;
-    }
-    #btn-yes:hover { transform: scale(1.05); }
-
-    /* Nút KHÔNG – absolute, góc phải-dưới, sẽ bị JS di chuyển bằng left/bottom */
     #btn-no {
       position: absolute;
-      left: calc(55% + 5px);  /* vị trí ban đầu – cạnh nút CÓ */
-      bottom: 0;
-      width: calc(45% - 5px);
+      /* Vị trí ban đầu: góc phải dưới */
+      right: 0; bottom: 8px;
+      left: auto; top: auto;
+      width: clamp(90px, 38%, 130px);
       background: #fff; color: #8a94a8;
       border: 1.5px solid #d0d5e0; border-radius: 50px;
-      padding: 13px 0;
-      font-family: 'DM Sans', sans-serif; font-size: clamp(0.78rem,2.5vw,0.9rem);
-      font-weight: 500; cursor: pointer; white-space: nowrap; overflow: hidden;
-      /* transition di chuyển do JS gán */
+      padding: 12px 0;
+      font-family: 'DM Sans',sans-serif; font-size: clamp(0.82rem,2.5vw,0.95rem);
+      font-weight: 500; cursor: pointer; white-space: nowrap;
+      /* JS sẽ gán transition khi cần */
     }
 
     #troll-msg {
-      font-family: 'Cormorant Garamond', serif; font-style: italic;
-      font-size: clamp(0.82rem,2.5vw,0.9rem); color: #c9a84c;
-      min-height: 22px; margin-top: 10px;
-      transition: opacity 0.3s; opacity: 0;
+      font-family:'Cormorant Garamond',serif; font-style:italic;
+      font-size:clamp(0.82rem,2.5vw,0.9rem); color:#c9a84c;
+      min-height:22px; margin-top:8px;
+      transition:opacity 0.3s; opacity:0;
     }
 
     /* Màn cảm ơn */
-    .rsvp-screen { display: none; }
-    .thanks-emoji { font-size: clamp(2.4rem,7vw,3rem); margin-bottom: 16px; animation: popIn 0.5s both; }
-    .thanks-title { font-family: 'Great Vibes', cursive; font-size: clamp(1.6rem,5vw,2rem); color: #1a2340; margin-bottom: 10px; }
-    .thanks-body  {
-      font-family: 'Cormorant Garamond', serif; font-size: clamp(0.95rem,3vw,1.05rem);
-      font-style: italic; color: #5a6480; line-height: 1.7; margin-bottom: 24px;
+    .rsvp-screen{display:none;}
+    .thanks-emoji{font-size:clamp(2.4rem,7vw,3rem);margin-bottom:16px;animation:popIn 0.5s both;}
+    .thanks-title{font-family:'Great Vibes',cursive;font-size:clamp(1.6rem,5vw,2rem);color:#1a2340;margin-bottom:10px;}
+    .thanks-body{
+      font-family:'Cormorant Garamond',serif;font-size:clamp(0.95rem,3vw,1.05rem);
+      font-style:italic;color:#5a6480;line-height:1.7;margin-bottom:24px;
     }
-    .btn-close-yes {
-      background: linear-gradient(135deg, #c9a84c, #e8cf82); color: #1a2340;
-      border: none; border-radius: 50px; padding: 11px 28px;
-      font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: clamp(0.82rem,2.5vw,0.9rem); cursor: pointer;
+    .btn-close-yes{
+      background:linear-gradient(135deg,#c9a84c,#e8cf82);color:#1a2340;
+      border:none;border-radius:50px;padding:11px 28px;
+      font-family:'DM Sans',sans-serif;font-weight:600;font-size:clamp(0.82rem,2.5vw,0.9rem);cursor:pointer;
     }
-    .btn-close-no {
-      background: #f0f2f8; color: #5a6480;
-      border: 1.5px solid #d0d5e0; border-radius: 50px; padding: 11px 28px;
-      font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: clamp(0.82rem,2.5vw,0.9rem); cursor: pointer;
+    .btn-close-no{
+      background:#f0f2f8;color:#5a6480;border:1.5px solid #d0d5e0;border-radius:50px;padding:11px 28px;
+      font-family:'DM Sans',sans-serif;font-weight:500;font-size:clamp(0.82rem,2.5vw,0.9rem);cursor:pointer;
     }
-    @keyframes popIn {
-      from { transform: scale(0.5); opacity: 0; }
-      to   { transform: scale(1);   opacity: 1; }
+    @keyframes popIn{
+      from{transform:scale(0.5);opacity:0;}
+      to{transform:scale(1);opacity:1;}
     }
 
-    @media (max-width: 480px) {
-      #rsvp-overlay { align-items: flex-end !important; padding: 0 !important; }
-      #rsvp-card    { border-radius: 24px 24px 0 0 !important; width: 100% !important; padding-bottom: 40px !important; }
+    @media(max-width:480px){
+      #rsvp-overlay{align-items:flex-end!important;padding:0!important;}
+      #rsvp-card{border-radius:24px 24px 0 0!important;width:100%!important;padding-bottom:40px!important;}
     }
   </style>
 </head>
@@ -351,12 +350,15 @@
         <p class="rsvp-sub">Sự có mặt của bạn rất quan trọng 🥺</p>
 
         <!--
-          #btn-arena: khung cố định. overflow:hidden = nút KHÔNG không bao giờ ra ngoài.
-          Cả 2 nút đều dùng position:absolute bên trong arena.
+          Tầng 1: #btn-arena – nút KHÔNG bay trong này, tách biệt hoàn toàn với nút CÓ
+          Tầng 2: #btn-yes-wrap – nút CÓ cố định ở dưới, không bao giờ chồng lên
         -->
         <div id="btn-arena">
-          <button id="btn-yes" onclick="showYes()">✅ Có, mình sẽ đến!</button>
           <button id="btn-no">Không</button>
+        </div>
+
+        <div id="btn-yes-wrap">
+          <button id="btn-yes" onclick="showYes()">✅ Có, mình sẽ đến!</button>
         </div>
 
         <p id="troll-msg"></p>
@@ -393,18 +395,16 @@
 
     /*
       State machine:
-        'idle'     → chưa làm gì
-        'wobbled'  → đã click 1 lần (wobble xong)
-        'fly'      → đang bay trong arena
-        'vanished' → đã biến mất
+        'idle'     → chưa click lần nào
+        'wobbled'  → đã click 1 lần, wobble xong
+        'fly'      → đang bay (click lần 2 trở đi)
+        'vanished' → đã biến mất (click trúng hoặc hover đủ lần)
     */
     let phase      = 'idle';
     let hoverCount = 0;
     let isCooling  = false;
-
-    // Lưu vị trí dưới dạng % để resize-safe
-    let savedLeftPct   = null;
-    let savedBottomPct = null;
+    // Lưu vị trí dạng % (resize-safe)
+    let savedLP = null, savedBP = null;
 
     const msgs = [
       '😏 Ủa? Đến đây rồi à...',
@@ -425,30 +425,26 @@
     }
 
     /*
-      Tính vị trí ngẫu nhiên (px) cho btn-no bên trong arena.
-      Đảm bảo nút nằm HOÀN TOÀN trong arena — không tràn bất kỳ cạnh nào.
+      Tính vị trí ngẫu nhiên (px) TRONG arena.
+      Arena có overflow:hidden nên nút sẽ bị clip nếu tràn,
+      nhưng ta vẫn tính chặt để không bị clip.
     */
     function randomPos() {
-      // Đo kích thước arena & nút SAU khi DOM ổn định
-      const aw = arena.clientWidth;
-      const ah = arena.clientHeight;
-      const bw = btn.offsetWidth;
-      const bh = btn.offsetHeight;
-      const pad = 4; // px khoảng đệm với viền arena
+      const aw  = arena.clientWidth;
+      const ah  = arena.clientHeight;
+      const bw  = btn.offsetWidth  || 100;
+      const bh  = btn.offsetHeight || 44;
+      const pad = 6;
 
-      // Giới hạn chặt: [pad, aw - bw - pad] và [pad, ah - bh - pad]
-      const maxLeft   = Math.max(pad, aw - bw - pad);
-      const maxBottom = Math.max(pad, ah - bh - pad);
+      const maxL = Math.max(pad, aw - bw - pad);
+      const maxB = Math.max(pad, ah - bh - pad);
 
-      const left   = pad + Math.random() * (maxLeft   - pad);
-      const bottom = pad + Math.random() * (maxBottom - pad);
-      return { left, bottom };
+      return {
+        left:   pad + Math.random() * (maxL - pad),
+        bottom: pad + Math.random() * (maxB - pad),
+      };
     }
 
-    /*
-      Áp vị trí lên nút (luôn dùng left + bottom, không dùng right/top).
-      animate=false → không transition (dùng khi clamp sau resize).
-    */
     function applyPos(left, bottom, animate) {
       btn.style.transition = animate
         ? 'left 0.22s cubic-bezier(0.34,1.56,0.64,1), bottom 0.22s cubic-bezier(0.34,1.56,0.64,1)'
@@ -460,37 +456,30 @@
     }
 
     function savePos(left, bottom) {
-      const aw = arena.clientWidth;
-      const ah = arena.clientHeight;
-      savedLeftPct   = left   / aw * 100;
-      savedBottomPct = bottom / ah * 100;
+      savedLP = left   / arena.clientWidth  * 100;
+      savedBP = bottom / arena.clientHeight * 100;
     }
 
-    function clampSaved() {
-      if (savedLeftPct === null) return;
-      const aw = arena.clientWidth;
-      const ah = arena.clientHeight;
-      const bw = btn.offsetWidth;
-      const bh = btn.offsetHeight;
-      const pad = 4;
-      const left   = Math.min(Math.max(pad, savedLeftPct   / 100 * aw), aw - bw - pad);
-      const bottom = Math.min(Math.max(pad, savedBottomPct / 100 * ah), ah - bh - pad);
-      applyPos(left, bottom, false);
+    function clampAndApply(animate) {
+      if (savedLP === null) return;
+      const aw = arena.clientWidth, ah = arena.clientHeight;
+      const bw = btn.offsetWidth || 100, bh = btn.offsetHeight || 44;
+      const pad = 6;
+      const l = Math.min(Math.max(pad, savedLP / 100 * aw), aw - bw - pad);
+      const b = Math.min(Math.max(pad, savedBP / 100 * ah), ah - bh - pad);
+      applyPos(l, b, animate);
     }
 
-    // Đồng bộ lại vị trí nút khi resize cửa sổ
     window.addEventListener('resize', () => {
-      if (phase === 'fly' || phase === 'vanished') clampSaved();
+      if (phase === 'fly' || phase === 'vanished') clampAndApply(false);
     });
 
-    // ── Teleport ngẫu nhiên trong arena ──────────────────────
     function teleport() {
       const pos = randomPos();
       applyPos(pos.left, pos.bottom, true);
       savePos(pos.left, pos.bottom);
     }
 
-    // ── Wobble tại chỗ ────────────────────────────────────────
     function wobble() {
       const angles = [-8, 8, -6, 6, 0];
       let i = 0;
@@ -504,21 +493,17 @@
       showMsg('😏 Ủa? Bấm được không vậy?');
     }
 
-    // ── Biến mất ──────────────────────────────────────────────
     function vanish() {
       phase = 'vanished';
-      btn.style.transition    = 'opacity 0.35s ease, transform 0.35s ease';
+      btn.style.transition    = 'opacity 0.3s ease, transform 0.3s ease';
       btn.style.opacity       = '0';
-      btn.style.transform     = 'scale(0.2)';
+      btn.style.transform     = 'scale(0.15)';
       btn.style.pointerEvents = 'none';
-      showMsg('😂 Biến mất rồi! Chỉ còn một lựa chọn thôi...');
     }
 
-    // ── Hiện lại khi hover nút CÓ ────────────────────────────
     function restore() {
       phase = 'fly';
-      clampSaved();   // về đúng vị trí đã lưu, đã clamp
-      // Delay nhỏ để transition opacity hoạt động sau khi vị trí đã set
+      clampAndApply(false);
       requestAnimationFrame(() => {
         btn.style.transition    = 'opacity 0.4s ease, transform 0.4s ease';
         btn.style.opacity       = '1';
@@ -528,12 +513,35 @@
       showMsg('👀 Lại đây rồi...');
     }
 
-    // ── Logic hover nút KHÔNG ─────────────────────────────────
+    // ── CLICK nút KHÔNG ──────────────────────────────────────
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+
+      if (phase === 'vanished') return;
+
+      if (phase === 'idle') {
+        // Click 1: wobble
+        phase = 'wobbled';
+        wobble();
+      } else if (phase === 'wobbled') {
+        // Click 2: bắt đầu bay
+        phase = 'fly';
+        teleport();
+        showMsg('🏃 Bắt được thì bấm nha!');
+      } else if (phase === 'fly') {
+        // Click trúng khi đang fly → biến mất luôn!
+        vanish();
+        showMsg('😂 Ồ! Bắt được rồi... nhưng nó biến mất rồi 😈');
+      }
+    });
+
+    // ── HOVER nút KHÔNG (chỉ active ở phase fly) ─────────────
     function onNoEnter() {
       if (phase !== 'fly') return;
       if (isCooling) return;
       isCooling = true;
-      setTimeout(() => { isCooling = false; }, 250);
+      setTimeout(() => { isCooling = false; }, 240);
 
       hoverCount++;
       teleport();
@@ -541,55 +549,52 @@
       const idx = Math.min(Math.floor(hoverCount / 2), msgs.length - 1);
       showMsg(msgs[idx]);
 
+      // Từ hover lần 5 trở đi: có xác suất biến mất
       if (hoverCount >= 5) {
-        // Xác suất tăng dần từ 15% (lần 5) lên tối đa 70%
-        const chance = Math.min(0.7, 0.15 + (hoverCount - 5) * 0.055);
-        if (Math.random() < chance) { vanish(); return; }
+        const chance = Math.min(0.72, 0.15 + (hoverCount - 5) * 0.057);
+        if (Math.random() < chance) {
+          vanish();
+          showMsg('😂 Biến mất rồi! Chỉ còn một lựa chọn thôi...');
+        }
       }
     }
 
     btn.addEventListener('mouseenter', onNoEnter);
 
-    // ── CLICK nút KHÔNG ──────────────────────────────────────
-    btn.addEventListener('click', (e) => {
-      e.preventDefault();
-      if (phase === 'fly' || phase === 'vanished') return;
-      if (phase === 'idle') {
-        phase = 'wobbled';
-        wobble();
-      } else if (phase === 'wobbled') {
-        phase = 'fly';
-        teleport();
-        showMsg('🏃 Bắt được thì bấm nha!');
-      }
-    });
-
-    // ── Hover nút CÓ → restore ────────────────────────────────
+    // ── Hover nút CÓ → restore nút KHÔNG nếu đã vanished ─────
     btnYes.addEventListener('mouseenter', () => { if (phase === 'vanished') restore(); });
 
-    // ── TOUCH – mobile ────────────────────────────────────────
+    // ── TOUCH mobile ──────────────────────────────────────────
     btn.addEventListener('touchstart', (e) => {
       e.preventDefault();
       if (phase === 'idle') {
         phase = 'wobbled'; wobble();
       } else if (phase === 'wobbled') {
         phase = 'fly'; teleport(); showMsg('🏃 Bắt được thì bấm nha!');
-      } else {
-        onNoEnter();
+      } else if (phase === 'fly') {
+        // Touch trúng = click trúng → biến mất
+        vanish();
+        showMsg('😂 Ồ! Bắt được rồi... nhưng nó biến mất rồi 😈');
       }
     }, { passive: false });
+
+    // Trên mobile: touchmove vào arena = onNoEnter (mô phỏng hover)
+    arena.addEventListener('touchmove', (e) => {
+      if (phase !== 'fly') return;
+      const touch = e.touches[0];
+      const el = document.elementFromPoint(touch.clientX, touch.clientY);
+      if (el === btn || btn.contains(el)) { onNoEnter(); }
+    }, { passive: true });
 
     btnYes.addEventListener('touchstart', () => {
       if (phase === 'vanished') restore();
     }, { passive: true });
 
-    // ── Reset nút về ban đầu (xóa mọi inline style) ──────────
+    // ── Reset ─────────────────────────────────────────────────
     function resetBtn() {
       btn.removeAttribute('style');
-      phase      = 'idle';
-      hoverCount = 0;
-      isCooling  = false;
-      savedLeftPct = savedBottomPct = null;
+      phase = 'idle'; hoverCount = 0; isCooling = false;
+      savedLP = savedBP = null;
     }
 
     window.showYes = () => {
