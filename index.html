@@ -407,15 +407,15 @@
     let savedLP = null, savedBP = null;
 
     const msgs = [
-      '😏 Ủa? Đến đây rồi à...',
-      '🤔 Sao khó bắt vậy nhỉ?',
-      '😅 Cứ thử đi, mình chờ...',
+      ' Ủa? Đến đây rồi à...',
+      ' Sao khó bắt vậy nhỉ?',
+      ' Cứ thử đi, mình chờ...',
       '👀 Kiên trì dữ vậy trời!',
-      '🥵 Mệt chưa?',
-      '🥺 Mình buồn lắm đó...',
-      '😂 Vẫn chưa bỏ cuộc à...',
-      '🫣 Thôi tha cho mình đi...',
-      '💀 Bạn... ổn không?',
+      ' Mệt chưa?',
+      ' Mình buồn lắm đó...',
+      ' Vẫn chưa bỏ cuộc à...',
+      ' Thôi tha cho mình đi...',
+      ' Bạn... ổn không?',
     ];
 
     function showMsg(txt) {
@@ -532,7 +532,7 @@
       } else if (phase === 'fly') {
         // Click trúng khi đang fly → biến mất luôn!
         vanish();
-        showMsg('😂 Ồ! Bắt được rồi... nhưng nó biến mất rồi 😈');
+        showMsg(' Ồ! Bắt được rồi... nhưng nó biến mất rồi 😈');
       }
     });
 
@@ -554,7 +554,7 @@
         const chance = Math.min(0.72, 0.15 + (hoverCount - 5) * 0.057);
         if (Math.random() < chance) {
           vanish();
-          showMsg('😂 Biến mất rồi! Chỉ còn một lựa chọn thôi...');
+          showMsg(' Biến mất rồi! Chỉ còn một lựa chọn thôi...');
         }
       }
     }
@@ -574,7 +574,7 @@
       } else if (phase === 'fly') {
         // Touch trúng = click trúng → biến mất
         vanish();
-        showMsg('😂 Ồ! Bắt được rồi... nhưng nó biến mất rồi 😈');
+        showMsg(' Ồ! Bắt được rồi... nhưng nó biến mất rồi 😈');
       }
     }, { passive: false });
 
