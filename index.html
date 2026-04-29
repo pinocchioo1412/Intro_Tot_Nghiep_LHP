@@ -1,622 +1,846 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Thiệp Mời Lễ Tốt Nghiệp</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thiệp Mời Lễ Tốt Nghiệp</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap"
+        rel="stylesheet" />
 
-  <style>
-    :root {
-      --bg-image: url("background.jpg");
-      --avatar-image: url("avatar.jpg");
-      --gold:       #c9a84c;
-      --gold-light: #e8cf82;
-      --navy:       #1a2340;
-      --card-bg:    rgba(253, 248, 240, 0.82);
-      --font-script: 'Great Vibes', cursive;
-      --font-serif:  'Cormorant Garamond', Georgia, serif;
-      --font-body:   'DM Sans', sans-serif;
-    }
+    <style>
+        :root {
+            --bg-image: url("background.jpg");
+            --avatar-image: url("image.jpg");
+            --gold: #c9a84c;
+            --gold-light: #e8cf82;
+            --navy: #1a2340;
+            --card-bg: rgba(253, 248, 240, 0.82);
+            --font-script: 'Great Vibes', cursive;
+            --font-serif: 'Cormorant Garamond', Georgia, serif;
+            --font-body: 'DM Sans', sans-serif;
+        }
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-    body {
-      min-height: 100vh;
-      font-family: var(--font-body);
-      background:
-        linear-gradient(160deg, rgba(26,35,64,0.55) 0%, rgba(26,35,64,0.30) 50%, rgba(201,168,76,0.25) 100%),
-        var(--bg-image) center center / cover no-repeat fixed;
-      background-color: var(--navy);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: clamp(16px,4vw,48px) clamp(12px,4vw,24px);
-    }
+        body {
+            min-height: 100vh;
+            font-family: var(--font-body);
+            background:
+                linear-gradient(160deg, rgba(26, 35, 64, 0.55) 0%, rgba(26, 35, 64, 0.30) 50%, rgba(201, 168, 76, 0.25) 100%),
+                var(--bg-image) center center / cover no-repeat fixed;
+            background-color: var(--navy);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: clamp(16px, 4vw, 48px) clamp(12px, 4vw, 24px);
+        }
 
-    .card {
-      width: min(500px, 100%);
-      background: var(--card-bg);
-      backdrop-filter: blur(18px) saturate(1.4);
-      -webkit-backdrop-filter: blur(18px) saturate(1.4);
-      border-radius: clamp(16px,4vw,28px);
-      border: 1px solid rgba(201,168,76,0.35);
-      box-shadow: 0 32px 80px rgba(26,35,64,0.35), 0 0 0 1px rgba(255,255,255,0.45) inset;
-      overflow: hidden;
-      animation: cardIn 0.9s cubic-bezier(0.22,1,0.36,1) both;
-    }
-    @keyframes cardIn {
-      from { opacity:0; transform:translateY(40px) scale(0.97); }
-      to   { opacity:1; transform:translateY(0) scale(1); }
-    }
+        .card {
+            width: min(500px, 100%);
+            background: var(--card-bg);
+            backdrop-filter: blur(18px) saturate(1.4);
+            -webkit-backdrop-filter: blur(18px) saturate(1.4);
+            border-radius: clamp(16px, 4vw, 28px);
+            border: 1px solid rgba(201, 168, 76, 0.35);
+            box-shadow: 0 32px 80px rgba(26, 35, 64, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.45) inset;
+            overflow: hidden;
+            animation: cardIn 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+        }
 
-    .card__header {
-      background: linear-gradient(135deg,var(--navy) 0%,#263266 100%);
-      padding: clamp(20px,5vw,36px) clamp(20px,6vw,32px) clamp(16px,4vw,24px);
-      text-align: center; position: relative; overflow: hidden;
-    }
-    .card__header::before,.card__header::after {
-      content:''; position:absolute; width:120px; height:120px; border-radius:50%;
-      background:radial-gradient(circle,rgba(201,168,76,0.18) 0%,transparent 70%);
-    }
-    .card__header::before{top:-40px;left:-40px;}
-    .card__header::after{bottom:-40px;right:-40px;}
+        @keyframes cardIn {
+            from {
+                opacity: 0;
+                transform: translateY(40px) scale(0.97);
+            }
 
-    .ornament {
-      display:block; color:var(--gold); font-size:clamp(8px,2vw,10px);
-      letter-spacing:5px; text-transform:uppercase; font-weight:400;
-      opacity:0.85; margin-bottom:10px; animation:fadeUp 0.7s 0.3s both;
-    }
-    .card__title {
-      font-family:var(--font-script); font-size:clamp(1.8rem,8vw,2.8rem);
-      color:#fff; line-height:1.2; animation:fadeUp 0.7s 0.4s both;
-    }
-    .divider-gold {
-      width:60px; height:2px;
-      background:linear-gradient(90deg,transparent,var(--gold),transparent);
-      margin:14px auto 0; animation:fadeUp 0.7s 0.5s both;
-    }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
 
-    .avatar-wrap {
-      display:flex; justify-content:center;
-      margin-top:-52px; position:relative; z-index:2;
-      animation:fadeUp 0.7s 0.55s both;
-    }
-    .avatar {
-      width:clamp(80px,20vw,104px); height:clamp(80px,20vw,104px);
-      border-radius:50%;
-      background:var(--avatar-image) center/cover no-repeat,#ddd;
-      border:4px solid #fff;
-      box-shadow:0 8px 24px rgba(26,35,64,0.25),0 0 0 3px var(--gold-light);
-      transition:transform 0.4s;
-    }
-    .avatar:hover{transform:scale(1.05);}
+        .card__header {
+            background: linear-gradient(135deg, var(--navy) 0%, #263266 100%);
+            padding: clamp(20px, 5vw, 36px) clamp(20px, 6vw, 32px) clamp(16px, 4vw, 24px);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
 
-    .card__body {
-      padding:clamp(16px,5vw,24px) clamp(16px,6vw,32px) clamp(20px,5vw,30px);
-      text-align:center;
-    }
-    .invite-text {
-      font-family:var(--font-serif); font-size:clamp(0.95rem,3vw,1.1rem);
-      font-style:italic; font-weight:300; color:#4a5568; line-height:1.8;
-      margin-bottom:22px; animation:fadeUp 0.7s 0.65s both;
-    }
-    .name {
-      font-family:var(--font-script); font-size:clamp(1.7rem,7vw,2.5rem);
-      color:var(--navy); margin-bottom:6px; animation:fadeUp 0.7s 0.7s both;
-    }
-    .major {
-      font-family:'Times New Roman',serif; font-size:clamp(0.75rem,2.5vw,0.85rem);
-      font-style:italic; letter-spacing:1px; color:var(--gold);
-      margin-bottom:26px; animation:fadeUp 0.7s 0.75s both;
-    }
-    .info-grid {
-      display:grid; grid-template-columns:1fr 1fr;
-      gap:clamp(8px,2vw,14px); margin-bottom:24px;
-      animation:fadeUp 0.7s 0.8s both;
-    }
-    .info-box {
-      background:rgba(201,168,76,0.10); border:1px solid rgba(201,168,76,0.30);
-      border-radius:14px; padding:clamp(10px,3vw,14px) clamp(8px,2vw,12px);
-    }
-    .info-box .icon  {font-size:clamp(1.1rem,3.5vw,1.4rem);display:block;margin-bottom:6px;}
-    .info-box .label {
-      font-family:'Times New Roman',serif; font-size:clamp(0.62rem,1.8vw,0.7rem);
-      font-weight:700; letter-spacing:2px; text-transform:uppercase;
-      color:var(--gold); display:block; margin-bottom:4px;
-    }
-    .info-box .value {
-      font-family:'Times New Roman',serif; font-size:clamp(0.85rem,2.5vw,1rem);
-      font-weight:700; color:var(--navy); line-height:1.5;
-    }
-    .info-box--full{grid-column:1/-1;}
+        .card__header::before,
+        .card__header::after {
+            content: '';
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(201, 168, 76, 0.18) 0%, transparent 70%);
+        }
 
-    .closing {
-      font-family:var(--font-serif); font-size:clamp(1rem,3vw,1.15rem);
-      font-style:italic; font-weight:300; color:#5a6480; line-height:1.7;
-      padding:18px 0 0; border-top:1px solid rgba(201,168,76,0.25);
-      margin-bottom:20px; animation:fadeUp 0.7s 0.9s both;
-    }
+        .card__header::before {
+            top: -40px;
+            left: -40px;
+        }
 
-    .card__footer {
-      background:linear-gradient(135deg,var(--navy) 0%,#263266 100%);
-      padding:clamp(12px,3vw,16px) clamp(20px,6vw,32px);
-      text-align:center; animation:fadeUp 0.7s 1s both;
-    }
-    .footer-label {
-      font-size:clamp(0.62rem,1.8vw,0.7rem); letter-spacing:2.5px;
-      text-transform:uppercase; color:rgba(255,255,255,0.55);
-      display:block; margin-bottom:6px;
-    }
-    .footer-phone {
-      font-size:clamp(0.95rem,3vw,1.1rem); font-weight:500;
-      color:var(--gold-light); text-decoration:none;
-      letter-spacing:2px; transition:color 0.2s;
-    }
-    .footer-phone:hover{color:#fff;}
+        .card__header::after {
+            bottom: -40px;
+            right: -40px;
+        }
 
-    @keyframes fadeUp {
-      from{opacity:0;transform:translateY(18px);}
-      to{opacity:1;transform:translateY(0);}
-    }
+        .ornament {
+            display: block;
+            color: var(--gold);
+            font-size: clamp(8px, 2vw, 10px);
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            font-weight: 400;
+            opacity: 0.85;
+            margin-bottom: 10px;
+            animation: fadeUp 0.7s 0.3s both;
+        }
 
-    /* ══════════════════════════════════════
+        .card__title {
+            font-family: var(--font-script);
+            font-size: clamp(1.8rem, 8vw, 2.8rem);
+            color: #fff;
+            line-height: 1.2;
+            animation: fadeUp 0.7s 0.4s both;
+        }
+
+        .divider-gold {
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            margin: 14px auto 0;
+            animation: fadeUp 0.7s 0.5s both;
+        }
+
+        .avatar-wrap {
+            display: flex;
+            justify-content: center;
+            margin-top: -52px;
+            position: relative;
+            z-index: 2;
+            animation: fadeUp 0.7s 0.55s both;
+        }
+
+        .avatar {
+            width: clamp(80px, 20vw, 104px);
+            height: clamp(80px, 20vw, 104px);
+            border-radius: 50%;
+            background: var(--avatar-image) center/cover no-repeat, #ddd;
+            border: 4px solid #fff;
+            box-shadow: 0 8px 24px rgba(26, 35, 64, 0.25), 0 0 0 3px var(--gold-light);
+            transition: transform 0.4s;
+        }
+
+        .avatar:hover {
+            transform: scale(1.05);
+        }
+
+        .card__body {
+            padding: clamp(16px, 5vw, 24px) clamp(16px, 6vw, 32px) clamp(20px, 5vw, 30px);
+            text-align: center;
+        }
+
+        .invite-text {
+            font-family: var(--font-serif);
+            font-size: clamp(0.95rem, 3vw, 1.1rem);
+            font-style: italic;
+            font-weight: 300;
+            color: #4a5568;
+            line-height: 1.8;
+            margin-bottom: 22px;
+            animation: fadeUp 0.7s 0.65s both;
+        }
+
+        .name {
+            font-family: var(--font-script);
+            font-size: clamp(1.7rem, 7vw, 2.5rem);
+            color: var(--navy);
+            margin-bottom: 6px;
+            animation: fadeUp 0.7s 0.7s both;
+        }
+
+        .major {
+            font-family: 'Times New Roman', serif;
+            font-size: clamp(0.75rem, 2.5vw, 0.85rem);
+            font-style: italic;
+            letter-spacing: 1px;
+            color: var(--gold);
+            margin-bottom: 26px;
+            animation: fadeUp 0.7s 0.75s both;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: clamp(8px, 2vw, 14px);
+            margin-bottom: 24px;
+            animation: fadeUp 0.7s 0.8s both;
+        }
+
+        .info-box {
+            background: rgba(201, 168, 76, 0.10);
+            border: 1px solid rgba(201, 168, 76, 0.30);
+            border-radius: 14px;
+            padding: clamp(10px, 3vw, 14px) clamp(8px, 2vw, 12px);
+        }
+
+        .info-box .icon {
+            font-size: clamp(1.1rem, 3.5vw, 1.4rem);
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .info-box .label {
+            font-family: 'Times New Roman', serif;
+            font-size: clamp(0.62rem, 1.8vw, 0.7rem);
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gold);
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .info-box .value {
+            font-family: 'Times New Roman', serif;
+            font-size: clamp(0.85rem, 2.5vw, 1rem);
+            font-weight: 700;
+            color: var(--navy);
+            line-height: 1.5;
+        }
+
+        .info-box--full {
+            grid-column: 1/-1;
+        }
+
+        .closing {
+            font-family: var(--font-serif);
+            font-size: clamp(1rem, 3vw, 1.15rem);
+            font-style: italic;
+            font-weight: 300;
+            color: #5a6480;
+            line-height: 1.7;
+            padding: 18px 0 0;
+            border-top: 1px solid rgba(201, 168, 76, 0.25);
+            margin-bottom: 20px;
+            animation: fadeUp 0.7s 0.9s both;
+        }
+
+        .card__footer {
+            background: linear-gradient(135deg, var(--navy) 0%, #263266 100%);
+            padding: clamp(12px, 3vw, 16px) clamp(20px, 6vw, 32px);
+            text-align: center;
+            animation: fadeUp 0.7s 1s both;
+        }
+
+        .footer-label {
+            font-size: clamp(0.62rem, 1.8vw, 0.7rem);
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.55);
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .footer-phone {
+            font-size: clamp(0.95rem, 3vw, 1.1rem);
+            font-weight: 500;
+            color: var(--gold-light);
+            text-decoration: none;
+            letter-spacing: 2px;
+            transition: color 0.2s;
+        }
+
+        .footer-phone:hover {
+            color: #fff;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(18px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ══════════════════════════════════════
        RSVP TRIGGER
     ══════════════════════════════════════ */
-    #rsvp-trigger {
-      position:fixed; bottom:clamp(16px,4vw,28px); right:clamp(16px,4vw,28px);
-      background:linear-gradient(135deg,#1a2340,#263266);
-      color:#e8cf82; border:1.5px solid #c9a84c; border-radius:50px;
-      padding:clamp(9px,2.5vw,12px) clamp(16px,4vw,22px);
-      font-family:'DM Sans',sans-serif; font-size:clamp(0.78rem,2.5vw,0.88rem);
-      font-weight:500; letter-spacing:1px; cursor:pointer;
-      box-shadow:0 8px 24px rgba(26,35,64,0.4);
-      opacity:0; transition:opacity 0.5s,transform 0.2s; z-index:999;
-    }
-    #rsvp-trigger:hover{transform:scale(1.05);}
+        #rsvp-trigger {
+            position: fixed;
+            bottom: clamp(16px, 4vw, 28px);
+            right: clamp(16px, 4vw, 28px);
+            background: linear-gradient(135deg, #1a2340, #263266);
+            color: #e8cf82;
+            border: 1.5px solid #c9a84c;
+            border-radius: 50px;
+            padding: clamp(9px, 2.5vw, 12px) clamp(16px, 4vw, 22px);
+            font-family: 'DM Sans', sans-serif;
+            font-size: clamp(0.78rem, 2.5vw, 0.88rem);
+            font-weight: 500;
+            letter-spacing: 1px;
+            cursor: pointer;
+            box-shadow: 0 8px 24px rgba(26, 35, 64, 0.4);
+            opacity: 0;
+            transition: opacity 0.5s, transform 0.2s;
+            z-index: 999;
+        }
 
-    /* ══════════════════════════════════════
+        #rsvp-trigger:hover {
+            transform: scale(1.05);
+        }
+
+        /* ══════════════════════════════════════
        OVERLAY
     ══════════════════════════════════════ */
-    #rsvp-overlay {
-      display:none; position:fixed; inset:0;
-      background:rgba(10,15,35,0.65);
-      backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px);
-      align-items:center; justify-content:center; z-index:1000; padding:20px;
-    }
-    #rsvp-card {
-      background:#fdf8f0; border-radius:24px;
-      border:1px solid rgba(201,168,76,0.4);
-      box-shadow:0 32px 80px rgba(26,35,64,0.35);
-      padding:clamp(24px,6vw,36px) clamp(20px,6vw,32px) clamp(20px,5vw,28px);
-      width:min(380px,calc(100vw - 32px));
-      text-align:center; position:relative;
-      animation:cardIn 0.4s cubic-bezier(0.22,1,0.36,1) both;
-    }
+        #rsvp-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(10, 15, 35, 0.65);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            padding: 20px;
+        }
 
-    .rsvp-emoji{font-size:clamp(2rem,6vw,2.4rem);margin-bottom:12px;}
-    .rsvp-title{
-      font-family:'Cormorant Garamond',serif;
-      font-size:clamp(1.1rem,4vw,1.35rem);font-style:italic;
-      color:#1a2340;line-height:1.5;margin-bottom:8px;
-    }
-    .rsvp-sub{
-      font-size:clamp(0.72rem,2.2vw,0.8rem);color:#8a94a8;
-      margin-bottom:16px;letter-spacing:0.5px;
-    }
+        #rsvp-card {
+            background: #fdf8f0;
+            border-radius: 24px;
+            border: 1px solid rgba(201, 168, 76, 0.4);
+            box-shadow: 0 32px 80px rgba(26, 35, 64, 0.35);
+            padding: clamp(24px, 6vw, 36px) clamp(20px, 6vw, 32px) clamp(20px, 5vw, 28px);
+            width: min(380px, calc(100vw - 32px));
+            text-align: center;
+            position: relative;
+            animation: cardIn 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+        }
 
-    /*
+        .rsvp-emoji {
+            font-size: clamp(2rem, 6vw, 2.4rem);
+            margin-bottom: 12px;
+        }
+
+        .rsvp-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.1rem, 4vw, 1.35rem);
+            font-style: italic;
+            color: #1a2340;
+            line-height: 1.5;
+            margin-bottom: 8px;
+        }
+
+        .rsvp-sub {
+            font-size: clamp(0.72rem, 2.2vw, 0.8rem);
+            color: #8a94a8;
+            margin-bottom: 16px;
+            letter-spacing: 0.5px;
+        }
+
+        /*
       Layout 2 tầng:
       - #btn-yes-wrap : hàng cố định ở dưới, luôn hiển thị
       - #btn-arena    : khung bay của nút KHÔNG, nằm TRÊN nút CÓ
                         overflow:hidden đảm bảo nút không bao giờ ra ngoài
     */
-    #btn-yes-wrap {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-    }
+        #btn-yes-wrap {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
 
-    #btn-yes {
-      width: 60%;
-      background: linear-gradient(135deg,#1a2340,#263266);
-      color: #e8cf82; border: none; border-radius: 50px;
-      padding: 13px 0;
-      font-family: 'DM Sans',sans-serif; font-size: clamp(0.82rem,2.5vw,0.95rem);
-      font-weight: 600; cursor: pointer; letter-spacing: 0.3px;
-      transition: transform 0.15s, box-shadow 0.15s;
-      white-space: nowrap;
-    }
-    #btn-yes:hover { transform: scale(1.05); box-shadow: 0 6px 20px rgba(26,35,64,0.25); }
+        #btn-yes {
+            width: 60%;
+            background: linear-gradient(135deg, #1a2340, #263266);
+            color: #e8cf82;
+            border: none;
+            border-radius: 50px;
+            padding: 13px 0;
+            font-family: 'DM Sans', sans-serif;
+            font-size: clamp(0.82rem, 2.5vw, 0.95rem);
+            font-weight: 600;
+            cursor: pointer;
+            letter-spacing: 0.3px;
+            transition: transform 0.15s, box-shadow 0.15s;
+            white-space: nowrap;
+        }
 
-    /*
+        #btn-yes:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(26, 35, 64, 0.25);
+        }
+
+        /*
       #btn-arena: khung nút KHÔNG bay.
       - Chiều cao lớn hơn để có nhiều chỗ bay hơn
       - overflow:hidden = nút không bao giờ ra ngoài
       - pointer-events:none trên bản thân arena (nút bên trong vẫn nhận event)
       - Nằm TRƯỚC nút CÓ trong DOM → z-index cao hơn tự nhiên
     */
-    #btn-arena {
-      position: relative;
-      width: 100%;
-      height: 140px;
-      overflow: hidden;
-      margin-bottom: 10px;
-      /* border: 1px dashed rgba(201,168,76,0.2); */ /* bỏ comment để debug */
-    }
+        #btn-arena {
+            position: relative;
+            width: 100%;
+            height: 220px;
+            overflow: hidden;
+            margin-bottom: 10px;
+            /* border: 1px dashed rgba(201,168,76,0.2); */
+            /* bỏ comment để debug */
+        }
 
-    #btn-no {
-      position: absolute;
-      /* Vị trí ban đầu: góc phải dưới */
-      right: 0; bottom: 8px;
-      left: auto; top: auto;
-      width: clamp(90px, 38%, 130px);
-      background: #fff; color: #8a94a8;
-      border: 1.5px solid #d0d5e0; border-radius: 50px;
-      padding: 12px 0;
-      font-family: 'DM Sans',sans-serif; font-size: clamp(0.82rem,2.5vw,0.95rem);
-      font-weight: 500; cursor: pointer; white-space: nowrap;
-      /* JS sẽ gán transition khi cần */
-    }
+        #btn-no {
+            position: absolute;
+            /* Vị trí ban đầu: góc phải dưới */
+            right: 0;
+            bottom: 8px;
+            left: auto;
+            top: auto;
+            width: clamp(90px, 38%, 130px);
+            background: #fff;
+            color: #8a94a8;
+            border: 1.5px solid #d0d5e0;
+            border-radius: 50px;
+            padding: 12px 0;
+            font-family: 'DM Sans', sans-serif;
+            font-size: clamp(0.82rem, 2.5vw, 0.95rem);
+            font-weight: 500;
+            cursor: pointer;
+            white-space: nowrap;
+            /* JS sẽ gán transition khi cần */
+        }
 
-    #troll-msg {
-      font-family:'Cormorant Garamond',serif; font-style:italic;
-      font-size:clamp(0.82rem,2.5vw,0.9rem); color:#c9a84c;
-      min-height:22px; margin-top:8px;
-      transition:opacity 0.3s; opacity:0;
-    }
+        #troll-msg {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: clamp(0.82rem, 2.5vw, 0.9rem);
+            color: #c9a84c;
+            min-height: 22px;
+            margin-top: 8px;
+            transition: opacity 0.3s;
+            opacity: 0;
+        }
 
-    /* Màn cảm ơn */
-    .rsvp-screen{display:none;}
-    .thanks-emoji{font-size:clamp(2.4rem,7vw,3rem);margin-bottom:16px;animation:popIn 0.5s both;}
-    .thanks-title{font-family:'Great Vibes',cursive;font-size:clamp(1.6rem,5vw,2rem);color:#1a2340;margin-bottom:10px;}
-    .thanks-body{
-      font-family:'Cormorant Garamond',serif;font-size:clamp(0.95rem,3vw,1.05rem);
-      font-style:italic;color:#5a6480;line-height:1.7;margin-bottom:24px;
-    }
-    .btn-close-yes{
-      background:linear-gradient(135deg,#c9a84c,#e8cf82);color:#1a2340;
-      border:none;border-radius:50px;padding:11px 28px;
-      font-family:'DM Sans',sans-serif;font-weight:600;font-size:clamp(0.82rem,2.5vw,0.9rem);cursor:pointer;
-    }
-    .btn-close-no{
-      background:#f0f2f8;color:#5a6480;border:1.5px solid #d0d5e0;border-radius:50px;padding:11px 28px;
-      font-family:'DM Sans',sans-serif;font-weight:500;font-size:clamp(0.82rem,2.5vw,0.9rem);cursor:pointer;
-    }
-    @keyframes popIn{
-      from{transform:scale(0.5);opacity:0;}
-      to{transform:scale(1);opacity:1;}
-    }
+        /* Màn cảm ơn */
+        .rsvp-screen {
+            display: none;
+        }
 
-    @media(max-width:480px){
-      #rsvp-overlay{align-items:flex-end!important;padding:0!important;}
-      #rsvp-card{border-radius:24px 24px 0 0!important;width:100%!important;padding-bottom:40px!important;}
-    }
-  </style>
+        .thanks-emoji {
+            font-size: clamp(2.4rem, 7vw, 3rem);
+            margin-bottom: 16px;
+            animation: popIn 0.5s both;
+        }
+
+        .thanks-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(1.6rem, 5vw, 2rem);
+            color: #1a2340;
+            margin-bottom: 10px;
+        }
+
+        .thanks-body {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(0.95rem, 3vw, 1.05rem);
+            font-style: italic;
+            color: #5a6480;
+            line-height: 1.7;
+            margin-bottom: 24px;
+        }
+
+        .btn-close-yes {
+            background: linear-gradient(135deg, #c9a84c, #e8cf82);
+            color: #1a2340;
+            border: none;
+            border-radius: 50px;
+            padding: 11px 28px;
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 600;
+            font-size: clamp(0.82rem, 2.5vw, 0.9rem);
+            cursor: pointer;
+        }
+
+        .btn-close-no {
+            background: #f0f2f8;
+            color: #5a6480;
+            border: 1.5px solid #d0d5e0;
+            border-radius: 50px;
+            padding: 11px 28px;
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 500;
+            font-size: clamp(0.82rem, 2.5vw, 0.9rem);
+            cursor: pointer;
+        }
+
+        @keyframes popIn {
+            from {
+                transform: scale(0.5);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        @media(max-width:480px) {
+            #rsvp-overlay {
+                align-items: flex-end !important;
+                padding: 0 !important;
+            }
+
+            #rsvp-card {
+                border-radius: 24px 24px 0 0 !important;
+                width: 100% !important;
+                padding-bottom: 40px !important;
+            }
+        }
+    </style>
 </head>
+
 <body>
 
-  <article class="card">
-    <header class="card__header">
-      <span class="ornament">✦ Trân trọng kính mời ✦</span>
-      <h1 class="card__title">🎓 Lễ Tốt Nghiệp 🎓</h1>
-      <div class="divider-gold"></div>
-    </header>
+    <article class="card">
+        <header class="card__header">
+            <span class="ornament">✦ Trân trọng kính mời ✦</span>
+            <h1 class="card__title">🎓 Lễ Tốt Nghiệp 🎓</h1>
+            <div class="divider-gold"></div>
+        </header>
 
-    <div class="avatar-wrap">
-      <div class="avatar" role="img" aria-label="Ảnh sinh viên"></div>
-    </div>
-
-    <div class="card__body">
-      <p class="invite-text">Trân trọng kính mời bạn đến tham dự<br/>lễ tốt nghiệp của</p>
-      <p class="name">Lê Hà Phi</p>
-      <p class="major">Khoa Khoa học Máy tính · IT1 - 02 K66</p>
-
-      <div class="info-grid">
-        <div class="info-box">
-          <span class="icon">🗓</span><span class="label">Ngày</span>
-          <span class="value">10 / 05 / 2025</span>
+        <div class="avatar-wrap">
+            <div class="avatar" role="img" aria-label="Ảnh sinh viên"></div>
         </div>
-        <div class="info-box">
-          <span class="icon">🕑</span><span class="label">Thời gian</span>
-          <span class="value">14:00 – 17:30</span>
+
+        <div class="card__body">
+            <p class="invite-text">Trân trọng kính mời bạn đến tham dự<br />lễ tốt nghiệp của</p>
+            <p class="name">Lê Hà Phi</p>
+            <p class="major">Khoa Khoa học Máy tính · IT1 - 02 K66</p>
+
+            <div class="info-grid">
+                <div class="info-box">
+                    <span class="icon">🗓</span><span class="label">Ngày</span>
+                    <span class="value">10 / 05 / 2025</span>
+                </div>
+                <div class="info-box">
+                    <span class="icon">🕑</span><span class="label">Thời gian</span>
+                    <span class="value">14:00 – 17:30</span>
+                </div>
+                <div class="info-box info-box--full">
+                    <span class="icon">📍</span><span class="label">Địa điểm</span>
+                    <span class="value">Thư viện Tạ Quang Bửu<br />Đại học Bách Khoa Hà Nội</span>
+                </div>
+            </div>
+
+            <p class="closing">"Sự hiện diện của bạn là niềm vinh hạnh lớn."</p>
         </div>
-        <div class="info-box info-box--full">
-          <span class="icon">📍</span><span class="label">Địa điểm</span>
-          <span class="value">Thư viện Tạ Quang Bửu<br/>Đại học Bách Khoa Hà Nội</span>
-        </div>
-      </div>
 
-      <p class="closing">"Sự hiện diện của bạn là niềm vinh hạnh lớn."</p>
-    </div>
+        <footer class="card__footer">
+            <span class="footer-label">Liên hệ</span>
+            <a href="tel:0912345678" class="footer-phone">0385870389</a>
+        </footer>
+    </article>
 
-    <footer class="card__footer">
-      <span class="footer-label">Liên hệ</span>
-      <a href="tel:0912345678" class="footer-phone">0912 345 678</a>
-    </footer>
-  </article>
+    <button id="rsvp-trigger" onclick="openPopup()">✉ Xác nhận tham dự</button>
 
-  <button id="rsvp-trigger" onclick="openPopup()">✉ Xác nhận tham dự</button>
+    <div id="rsvp-overlay">
+        <div id="rsvp-card">
 
-  <div id="rsvp-overlay">
-    <div id="rsvp-card">
+            <div id="rsvp-question">
+                <div class="rsvp-emoji">🎓</div>
+                <p class="rsvp-title">Bạn có tham dự lễ tốt nghiệp không?</p>
+                <p class="rsvp-sub">Sự có mặt của bạn rất quan trọng 🥺</p>
 
-      <div id="rsvp-question">
-        <div class="rsvp-emoji">🎓</div>
-        <p class="rsvp-title">Bạn có tham dự lễ tốt nghiệp không?</p>
-        <p class="rsvp-sub">Sự có mặt của bạn rất quan trọng 🥺</p>
-
-        <!--
+                <!--
           Tầng 1: #btn-arena – nút KHÔNG bay trong này, tách biệt hoàn toàn với nút CÓ
           Tầng 2: #btn-yes-wrap – nút CÓ cố định ở dưới, không bao giờ chồng lên
         -->
-        <div id="btn-arena">
-          <button id="btn-no">Không</button>
+                <div id="btn-arena">
+                    <button id="btn-no">Không</button>
+                </div>
+
+                <div id="btn-yes-wrap">
+                    <button id="btn-yes" onclick="showYes()">✅ Có, mình sẽ đến!</button>
+                </div>
+
+                <p id="troll-msg"></p>
+            </div>
+
+            <div id="rsvp-yes" class="rsvp-screen">
+                <div class="thanks-emoji">🎉</div>
+                <p class="thanks-title">Cảm ơn bạn!</p>
+                <p class="thanks-body">
+                    Tuyệt vời! Mình rất vui khi biết bạn sẽ đến.<br />
+                    Hẹn gặp lại ngày <strong style="color:#1a2340;font-style:normal;">10/05</strong> nhé 🥳
+                </p>
+                <button class="btn-close-yes" onclick="closePopup()">Đóng ✨</button>
+            </div>
+
+            <div id="rsvp-surrender" class="rsvp-screen">
+                <div class="thanks-emoji">😮‍💨</div>
+                <p class="thanks-title"
+                    style="font-family:'Great Vibes',cursive;font-size:clamp(1.5rem,5vw,1.9rem);color:#1a2340;margin-bottom:10px;">
+                    Thôi được rồi...</p>
+                <p class="thanks-body">Mình hiểu rồi 😔<br />Dù sao cũng cảm ơn vì đã đọc thiệp.<br />Nhớ mình nha! 🥹
+                </p>
+                <button class="btn-close-no" onclick="closePopup()">Đóng</button>
+            </div>
+
         </div>
-
-        <div id="btn-yes-wrap">
-          <button id="btn-yes" onclick="showYes()">✅ Có, mình sẽ đến!</button>
-        </div>
-
-        <p id="troll-msg"></p>
-      </div>
-
-      <div id="rsvp-yes" class="rsvp-screen">
-        <div class="thanks-emoji">🎉</div>
-        <p class="thanks-title">Cảm ơn bạn!</p>
-        <p class="thanks-body">
-          Tuyệt vời! Mình rất vui khi biết bạn sẽ đến.<br/>
-          Hẹn gặp lại ngày <strong style="color:#1a2340;font-style:normal;">10/05</strong> nhé 🥳
-        </p>
-        <button class="btn-close-yes" onclick="closePopup()">Đóng ✨</button>
-      </div>
-
-      <div id="rsvp-surrender" class="rsvp-screen">
-        <div class="thanks-emoji">😮‍💨</div>
-        <p class="thanks-title" style="font-family:'Great Vibes',cursive;font-size:clamp(1.5rem,5vw,1.9rem);color:#1a2340;margin-bottom:10px;">Thôi được rồi...</p>
-        <p class="thanks-body">Mình hiểu rồi 😔<br/>Dù sao cũng cảm ơn vì đã đọc thiệp.<br/>Nhớ mình nha! 🥹</p>
-        <button class="btn-close-no" onclick="closePopup()">Đóng</button>
-      </div>
-
     </div>
-  </div>
 
-  <script>
-  (() => {
-    setTimeout(() => { document.getElementById('rsvp-trigger').style.opacity = '1'; }, 1500);
-    window.openPopup = () => { document.getElementById('rsvp-overlay').style.display = 'flex'; };
+    <script>
+        (() => {
+            setTimeout(() => { document.getElementById('rsvp-trigger').style.opacity = '1'; }, 1500);
+            window.openPopup = () => { document.getElementById('rsvp-overlay').style.display = 'flex'; };
 
-    const arena  = document.getElementById('btn-arena');
-    const btn    = document.getElementById('btn-no');
-    const btnYes = document.getElementById('btn-yes');
+            const arena = document.getElementById('btn-arena');
+            const btn = document.getElementById('btn-no');
+            const btnYes = document.getElementById('btn-yes');
 
-    /*
-      State machine:
-        'idle'     → chưa click lần nào
-        'wobbled'  → đã click 1 lần, wobble xong
-        'fly'      → đang bay (click lần 2 trở đi)
-        'vanished' → đã biến mất (click trúng hoặc hover đủ lần)
-    */
-    let phase      = 'idle';
-    let hoverCount = 0;
-    let isCooling  = false;
-    // Lưu vị trí dạng % (resize-safe)
-    let savedLP = null, savedBP = null;
+            /*
+              State machine:
+                'idle'     → chưa click lần nào
+                'wobbled'  → đã click 1 lần, wobble xong
+                'fly'      → đang bay (click lần 2 trở đi)
+                'vanished' → đã biến mất (click trúng hoặc hover đủ lần)
+            */
+            let phase = 'idle';
+            let hoverCount = 0;
+            let isCooling = false;
+            // Lưu vị trí dạng % (resize-safe)
+            let savedLP = null, savedBP = null;
 
-    const msgs = [
-      ' Ủa? Đến đây rồi à...',
-      ' Sao khó bắt vậy nhỉ?',
-      ' Cứ thử đi, mình chờ...',
-      '👀 Kiên trì dữ vậy trời!',
-      ' Mệt chưa?',
-      ' Mình buồn lắm đó...',
-      ' Vẫn chưa bỏ cuộc à...',
-      ' Thôi tha cho mình đi...',
-      ' Bạn... ổn không?',
-    ];
+            const msgs = [
+                ' Ủa? Đến đây rồi à...',
+                ' Sao khó bắt vậy nhỉ?',
+                ' Cứ thử đi, mình chờ...',
+                '👀 Kiên trì dữ vậy trời!',
+                ' Mệt chưa?',
+                ' Mình buồn lắm đó...',
+                ' Vẫn chưa bỏ cuộc à...',
+                ' Thôi tha cho mình đi...',
+                ' Bạn... ổn không?',
+            ];
 
-    function showMsg(txt) {
-      const el = document.getElementById('troll-msg');
-      el.style.opacity = '0';
-      setTimeout(() => { el.textContent = txt; el.style.opacity = txt ? '1' : '0'; }, 150);
-    }
+            function showMsg(txt) {
+                const el = document.getElementById('troll-msg');
+                el.style.opacity = '0';
+                setTimeout(() => { el.textContent = txt; el.style.opacity = txt ? '1' : '0'; }, 150);
+            }
 
-    /*
-      Tính vị trí ngẫu nhiên (px) TRONG arena.
-      Arena có overflow:hidden nên nút sẽ bị clip nếu tràn,
-      nhưng ta vẫn tính chặt để không bị clip.
-    */
-    function randomPos() {
-      const aw  = arena.clientWidth;
-      const ah  = arena.clientHeight;
-      const bw  = btn.offsetWidth  || 100;
-      const bh  = btn.offsetHeight || 44;
-      const pad = 6;
+            /*
+              Tính vị trí ngẫu nhiên (px) TRONG arena.
+              Arena có overflow:hidden nên nút sẽ bị clip nếu tràn,
+              nhưng ta vẫn tính chặt để không bị clip.
+            */
+            function randomPos() {
+                const aw = arena.clientWidth;
+                const ah = arena.clientHeight;
+                const bw = btn.offsetWidth || 100;
+                const bh = btn.offsetHeight || 44;
+                const pad = 6;
 
-      const maxL = Math.max(pad, aw - bw - pad);
-      const maxB = Math.max(pad, ah - bh - pad);
+                const maxL = Math.max(pad, aw - bw - pad);
+                const maxB = Math.max(pad, ah - bh - pad);
 
-      return {
-        left:   pad + Math.random() * (maxL - pad),
-        bottom: pad + Math.random() * (maxB - pad),
-      };
-    }
+                return {
+                    left: pad + Math.random() * (maxL - pad),
+                    bottom: pad + Math.random() * (maxB - pad),
+                };
+            }
 
-    function applyPos(left, bottom, animate) {
-      btn.style.transition = animate
-        ? 'left 0.22s cubic-bezier(0.34,1.56,0.64,1), bottom 0.22s cubic-bezier(0.34,1.56,0.64,1)'
-        : 'none';
-      btn.style.left   = left   + 'px';
-      btn.style.bottom = bottom + 'px';
-      btn.style.right  = 'auto';
-      btn.style.top    = 'auto';
-    }
+            function applyPos(left, bottom, animate) {
+                btn.style.transition = animate
+                    ? 'left 0.22s cubic-bezier(0.34,1.56,0.64,1), bottom 0.22s cubic-bezier(0.34,1.56,0.64,1)'
+                    : 'none';
+                btn.style.left = left + 'px';
+                btn.style.bottom = bottom + 'px';
+                btn.style.right = 'auto';
+                btn.style.top = 'auto';
+            }
 
-    function savePos(left, bottom) {
-      savedLP = left   / arena.clientWidth  * 100;
-      savedBP = bottom / arena.clientHeight * 100;
-    }
+            function savePos(left, bottom) {
+                savedLP = left / arena.clientWidth * 100;
+                savedBP = bottom / arena.clientHeight * 100;
+            }
 
-    function clampAndApply(animate) {
-      if (savedLP === null) return;
-      const aw = arena.clientWidth, ah = arena.clientHeight;
-      const bw = btn.offsetWidth || 100, bh = btn.offsetHeight || 44;
-      const pad = 6;
-      const l = Math.min(Math.max(pad, savedLP / 100 * aw), aw - bw - pad);
-      const b = Math.min(Math.max(pad, savedBP / 100 * ah), ah - bh - pad);
-      applyPos(l, b, animate);
-    }
+            function clampAndApply(animate) {
+                if (savedLP === null) return;
+                const aw = arena.clientWidth, ah = arena.clientHeight;
+                const bw = btn.offsetWidth || 100, bh = btn.offsetHeight || 44;
+                const pad = 6;
+                const l = Math.min(Math.max(pad, savedLP / 100 * aw), aw - bw - pad);
+                const b = Math.min(Math.max(pad, savedBP / 100 * ah), ah - bh - pad);
+                applyPos(l, b, animate);
+            }
 
-    window.addEventListener('resize', () => {
-      if (phase === 'fly' || phase === 'vanished') clampAndApply(false);
-    });
+            window.addEventListener('resize', () => {
+                if (phase === 'fly' || phase === 'vanished') clampAndApply(false);
+            });
 
-    function teleport() {
-      const pos = randomPos();
-      applyPos(pos.left, pos.bottom, true);
-      savePos(pos.left, pos.bottom);
-    }
+            function teleport() {
+                const pos = randomPos();
+                applyPos(pos.left, pos.bottom, true);
+                savePos(pos.left, pos.bottom);
+            }
 
-    function wobble() {
-      const angles = [-8, 8, -6, 6, 0];
-      let i = 0;
-      btn.style.transition = 'transform 0.08s ease';
-      const tick = () => {
-        if (i >= angles.length) { btn.style.transform = ''; return; }
-        btn.style.transform = `rotate(${angles[i++]}deg)`;
-        setTimeout(tick, 80);
-      };
-      tick();
-      showMsg('😏 Ủa? Bấm được không vậy?');
-    }
+            function wobble() {
+                const angles = [-8, 8, -6, 6, 0];
+                let i = 0;
+                btn.style.transition = 'transform 0.08s ease';
+                const tick = () => {
+                    if (i >= angles.length) { btn.style.transform = ''; return; }
+                    btn.style.transform = `rotate(${angles[i++]}deg)`;
+                    setTimeout(tick, 80);
+                };
+                tick();
+                showMsg('😏 Ủa? Bấm được không vậy?');
+            }
 
-    function vanish() {
-      phase = 'vanished';
-      btn.style.transition    = 'opacity 0.3s ease, transform 0.3s ease';
-      btn.style.opacity       = '0';
-      btn.style.transform     = 'scale(0.15)';
-      btn.style.pointerEvents = 'none';
-    }
+            function vanish() {
+                phase = 'vanished';
+                btn.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+                btn.style.opacity = '0';
+                btn.style.transform = 'scale(0.15)';
+                btn.style.pointerEvents = 'none';
+            }
 
-    function restore() {
-      phase = 'fly';
-      clampAndApply(false);
-      requestAnimationFrame(() => {
-        btn.style.transition    = 'opacity 0.4s ease, transform 0.4s ease';
-        btn.style.opacity       = '1';
-        btn.style.transform     = 'scale(1)';
-        btn.style.pointerEvents = '';
-      });
-      showMsg('👀 Lại đây rồi...');
-    }
+            function restore() {
+                phase = 'fly';
+                clampAndApply(false);
+                requestAnimationFrame(() => {
+                    btn.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+                    btn.style.opacity = '1';
+                    btn.style.transform = 'scale(1)';
+                    btn.style.pointerEvents = '';
+                });
+                showMsg('👀 Lại đây rồi...');
+            }
 
-    // ── CLICK nút KHÔNG ──────────────────────────────────────
-    btn.addEventListener('click', (e) => {
-      e.preventDefault();
-      e.stopPropagation();
+            // ── CLICK nút KHÔNG ──────────────────────────────────────
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
 
-      if (phase === 'vanished') return;
+                if (phase === 'vanished') return;
 
-      if (phase === 'idle') {
-        // Click 1: wobble
-        phase = 'wobbled';
-        wobble();
-      } else if (phase === 'wobbled') {
-        // Click 2: bắt đầu bay
-        phase = 'fly';
-        teleport();
-        showMsg('🏃 Bắt được thì bấm nha!');
-      } else if (phase === 'fly') {
-        // Click trúng khi đang fly → biến mất luôn!
-        vanish();
-        showMsg(' Ồ! Bắt được rồi... nhưng nó biến mất rồi 😈');
-      }
-    });
+                if (phase === 'idle') {
+                    // Click 1: wobble
+                    phase = 'wobbled';
+                    wobble();
+                } else if (phase === 'wobbled') {
+                    // Click 2: bắt đầu bay
+                    phase = 'fly';
+                    teleport();
+                    showMsg('🏃 Bắt được thì bấm nha!');
+                } else if (phase === 'fly') {
+                    // Click trúng khi đang fly → biến mất luôn!
+                    vanish();
+                    showMsg(' Ồ! Bắt được rồi... nhưng nó biến mất rồi 😈');
+                }
+            });
 
-    // ── HOVER nút KHÔNG (chỉ active ở phase fly) ─────────────
-    function onNoEnter() {
-      if (phase !== 'fly') return;
-      if (isCooling) return;
-      isCooling = true;
-      setTimeout(() => { isCooling = false; }, 240);
+            // ── HOVER nút KHÔNG (chỉ active ở phase fly) ─────────────
+            function onNoEnter() {
+                if (phase !== 'fly') return;
+                if (isCooling) return;
+                isCooling = true;
+                setTimeout(() => { isCooling = false; }, 240);
 
-      hoverCount++;
-      teleport();
+                hoverCount++;
+                teleport();
 
-      const idx = Math.min(Math.floor(hoverCount / 2), msgs.length - 1);
-      showMsg(msgs[idx]);
+                const idx = Math.min(Math.floor(hoverCount / 2), msgs.length - 1);
+                showMsg(msgs[idx]);
 
-      // Từ hover lần 5 trở đi: có xác suất biến mất
-      if (hoverCount >= 5) {
-        const chance = Math.min(0.72, 0.15 + (hoverCount - 5) * 0.057);
-        if (Math.random() < chance) {
-          vanish();
-          showMsg(' Biến mất rồi! Chỉ còn một lựa chọn thôi...');
-        }
-      }
-    }
+                // Từ hover lần 5 trở đi: có xác suất biến mất
+                if (hoverCount >= 5) {
+                    const chance = Math.min(0.72, 0.15 + (hoverCount - 5) * 0.057);
+                    if (Math.random() < chance) {
+                        vanish();
+                        showMsg(' Biến mất rồi! Chỉ còn một lựa chọn thôi...');
+                    }
+                }
+            }
 
-    btn.addEventListener('mouseenter', onNoEnter);
+            btn.addEventListener('mouseenter', onNoEnter);
 
-    // ── Hover nút CÓ → restore nút KHÔNG nếu đã vanished ─────
-    btnYes.addEventListener('mouseenter', () => { if (phase === 'vanished') restore(); });
+            // ── Hover nút CÓ → restore nút KHÔNG nếu đã vanished ─────
+            btnYes.addEventListener('mouseenter', () => { if (phase === 'vanished') restore(); });
 
-    // ── TOUCH mobile ──────────────────────────────────────────
-    btn.addEventListener('touchstart', (e) => {
-      e.preventDefault();
-      if (phase === 'idle') {
-        phase = 'wobbled'; wobble();
-      } else if (phase === 'wobbled') {
-        phase = 'fly'; teleport(); showMsg('🏃 Bắt được thì bấm nha!');
-      } else if (phase === 'fly') {
-        // Touch trúng = click trúng → biến mất
-        vanish();
-        showMsg(' Ồ! Bắt được rồi... nhưng nó biến mất rồi 😈');
-      }
-    }, { passive: false });
+            // ── TOUCH mobile ──────────────────────────────────────────
+            btn.addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                if (phase === 'idle') {
+                    phase = 'wobbled'; wobble();
+                } else if (phase === 'wobbled') {
+                    phase = 'fly'; teleport(); showMsg('🏃 Bắt được thì bấm nha!');
+                } else if (phase === 'fly') {
+                    // Touch trúng = click trúng → biến mất
+                    vanish();
+                    showMsg(' Ồ! Bắt được rồi... nhưng nó biến mất rồi 😈');
+                }
+            }, { passive: false });
 
-    // Trên mobile: touchmove vào arena = onNoEnter (mô phỏng hover)
-    arena.addEventListener('touchmove', (e) => {
-      if (phase !== 'fly') return;
-      const touch = e.touches[0];
-      const el = document.elementFromPoint(touch.clientX, touch.clientY);
-      if (el === btn || btn.contains(el)) { onNoEnter(); }
-    }, { passive: true });
+            // Trên mobile: touchmove vào arena = onNoEnter (mô phỏng hover)
+            arena.addEventListener('touchmove', (e) => {
+                if (phase !== 'fly') return;
+                const touch = e.touches[0];
+                const el = document.elementFromPoint(touch.clientX, touch.clientY);
+                if (el === btn || btn.contains(el)) { onNoEnter(); }
+            }, { passive: true });
 
-    btnYes.addEventListener('touchstart', () => {
-      if (phase === 'vanished') restore();
-    }, { passive: true });
+            btnYes.addEventListener('touchstart', () => {
+                if (phase === 'vanished') restore();
+            }, { passive: true });
 
-    // ── Reset ─────────────────────────────────────────────────
-    function resetBtn() {
-      btn.removeAttribute('style');
-      phase = 'idle'; hoverCount = 0; isCooling = false;
-      savedLP = savedBP = null;
-    }
+            // ── Reset ─────────────────────────────────────────────────
+            function resetBtn() {
+                btn.removeAttribute('style');
+                phase = 'idle'; hoverCount = 0; isCooling = false;
+                savedLP = savedBP = null;
+            }
 
-    window.showYes = () => {
-      document.getElementById('rsvp-question').style.display = 'none';
-      document.getElementById('rsvp-yes').style.display      = 'block';
-      resetBtn();
-    };
+            window.showYes = () => {
+                document.getElementById('rsvp-question').style.display = 'none';
+                document.getElementById('rsvp-yes').style.display = 'block';
+                resetBtn();
+            };
 
-    window.closePopup = () => {
-      document.getElementById('rsvp-overlay').style.display   = 'none';
-      document.getElementById('rsvp-question').style.display  = 'block';
-      document.getElementById('rsvp-yes').style.display       = 'none';
-      document.getElementById('rsvp-surrender').style.display = 'none';
-      resetBtn();
-      showMsg('');
-    };
+            window.closePopup = () => {
+                document.getElementById('rsvp-overlay').style.display = 'none';
+                document.getElementById('rsvp-question').style.display = 'block';
+                document.getElementById('rsvp-yes').style.display = 'none';
+                document.getElementById('rsvp-surrender').style.display = 'none';
+                resetBtn();
+                showMsg('');
+            };
 
-    document.getElementById('rsvp-overlay').addEventListener('click', (e) => {
-      if (e.target === document.getElementById('rsvp-overlay')) closePopup();
-    });
-  })();
-  </script>
+            document.getElementById('rsvp-overlay').addEventListener('click', (e) => {
+                if (e.target === document.getElementById('rsvp-overlay')) closePopup();
+            });
+        })();
+    </script>
 
 </body>
+
 </html>
