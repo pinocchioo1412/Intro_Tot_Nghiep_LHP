@@ -59,15 +59,8 @@
         }
 
         @keyframes cardIn {
-            from {
-                opacity: 0;
-                transform: translateY(40px) scale(0.97);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
+            from { opacity: 0; transform: translateY(40px) scale(0.97); }
+            to   { opacity: 1; transform: translateY(0) scale(1); }
         }
 
         .card__header {
@@ -88,15 +81,8 @@
             background: radial-gradient(circle, rgba(201, 168, 76, 0.18) 0%, transparent 70%);
         }
 
-        .card__header::before {
-            top: -40px;
-            left: -40px;
-        }
-
-        .card__header::after {
-            bottom: -40px;
-            right: -40px;
-        }
+        .card__header::before { top: -40px; left: -40px; }
+        .card__header::after  { bottom: -40px; right: -40px; }
 
         .ornament {
             display: block;
@@ -145,9 +131,7 @@
             transition: transform 0.4s;
         }
 
-        .avatar:hover {
-            transform: scale(1.05);
-        }
+        .avatar:hover { transform: scale(1.05); }
 
         .card__body {
             padding: clamp(16px, 5vw, 24px) clamp(16px, 6vw, 32px) clamp(20px, 5vw, 30px);
@@ -198,15 +182,8 @@
             padding: clamp(10px, 3vw, 14px) clamp(8px, 2vw, 12px);
         }
 
-        .info-box .icon {
-            font-size: clamp(1.1rem, 3.5vw, 1.4rem);
-            display: block;
-            margin-bottom: 6px;
-        }
-        .info-box .icon svg {
-            display: block;
-            margin: 0 auto;
-        }
+        .info-box .icon { font-size: clamp(1.1rem, 3.5vw, 1.4rem); display: block; margin-bottom: 6px; }
+        .info-box .icon svg { display: block; margin: 0 auto; }
         .info-box .label {
             font-family: 'Times New Roman', serif;
             font-size: clamp(0.62rem, 1.8vw, 0.7rem);
@@ -217,7 +194,6 @@
             display: block;
             margin-bottom: 4px;
         }
-
         .info-box .value {
             font-family: 'Times New Roman', serif;
             font-size: clamp(0.85rem, 2.5vw, 1rem);
@@ -225,10 +201,7 @@
             color: var(--navy);
             line-height: 1.5;
         }
-
-        .info-box--full {
-            grid-column: 1/-1;
-        }
+        .info-box--full { grid-column: 1/-1; }
 
         .closing {
             font-family: var(--font-serif);
@@ -267,30 +240,12 @@
             letter-spacing: 2px;
             transition: color 0.2s;
         }
+        .footer-phone:hover { color: #fff; }
 
-        .footer-phone:hover {
-            color: #fff;
-        }
-
-        @keyframes fadeUp {
-            from {
-                opacity: 0;
-                transform: translateY(18px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* ══════════════════════════════════════
-       RSVP TRIGGER
-    ══════════════════════════════════════ */
-        #rsvp-trigger {
+        /* ── FLOATING BUTTONS ── */
+        #map-trigger, #rsvp-trigger {
             position: fixed;
             bottom: clamp(16px, 4vw, 28px);
-            right: clamp(16px, 4vw, 28px);
             background: linear-gradient(135deg, #1a2340, #263266);
             color: #e8cf82;
             border: 1.5px solid #c9a84c;
@@ -306,14 +261,228 @@
             transition: opacity 0.5s, transform 0.2s;
             z-index: 999;
         }
+        #map-trigger  { left:  clamp(16px, 4vw, 28px); }
+        #rsvp-trigger { right: clamp(16px, 4vw, 28px); }
+        #map-trigger:hover, #rsvp-trigger:hover { transform: scale(1.05); }
 
-        #rsvp-trigger:hover {
-            transform: scale(1.05);
+        /* ── MAP OVERLAY ── */
+        #map-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(10, 15, 35, 0.65);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            padding: 20px;
         }
 
-        /* ══════════════════════════════════════
-       OVERLAY
-    ══════════════════════════════════════ */
+        #map-card {
+            background: #fdf8f0;
+            border-radius: 24px;
+            border: 1px solid rgba(201, 168, 76, 0.4);
+            box-shadow: 0 32px 80px rgba(26, 35, 64, 0.35);
+            width: min(480px, calc(100vw - 32px));
+            max-height: 90vh;
+            overflow-y: auto;
+            overflow-x: hidden;
+            animation: cardIn 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+        }
+
+        .map-header {
+            background: linear-gradient(135deg, #1a2340, #263266);
+            padding: 14px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .map-header-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Nút quay lại thiệp */
+        .map-back {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            background: rgba(232, 207, 130, 0.12);
+            border: 1px solid rgba(201, 168, 76, 0.4);
+            border-radius: 50px;
+            padding: 5px 12px 5px 9px;
+            color: #e8cf82;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s;
+            white-space: nowrap;
+        }
+        .map-back:hover {
+            background: rgba(232, 207, 130, 0.22);
+            color: #fff;
+        }
+        .map-back svg { flex-shrink: 0; }
+
+        .map-header-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1rem;
+            font-style: italic;
+            color: rgba(232, 207, 130, 0.75);
+        }
+
+        .map-tabs {
+            display: flex;
+            border-bottom: 1px solid rgba(201, 168, 76, 0.2);
+            background: #fdf8f0;
+        }
+
+        .map-tab {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            background: transparent;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #8a94a8;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 7px;
+        }
+        .map-tab.active { color: #1a2340; border-bottom-color: #c9a84c; }
+
+        .map-body { padding: 16px 20px 20px; }
+
+        .map-gate-info {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 12px;
+            padding: 10px 14px;
+            background: rgba(201, 168, 76, 0.08);
+            border: 1px solid rgba(201, 168, 76, 0.25);
+            border-radius: 12px;
+        }
+        .map-gate-icon { flex-shrink: 0; margin-top: 1px; }
+        .map-gate-name {
+            font-family: 'Times New Roman', serif;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #1a2340;
+            display: block;
+            margin-bottom: 2px;
+        }
+        .map-gate-addr { font-size: 0.75rem; color: #8a94a8; font-style: italic; }
+
+        .map-steps { list-style: none; padding: 0; margin: 0 0 14px; }
+        .map-steps li {
+            display: flex;
+            gap: 9px;
+            align-items: flex-start;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.92rem;
+            color: #4a5568;
+            line-height: 1.6;
+            margin-bottom: 8px;
+        }
+        .map-step-num {
+            width: 20px; height: 20px;
+            border-radius: 50%;
+            background: #1a2340;
+            color: #e8cf82;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 600;
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .map-iframe-wrap {
+            border-radius: 14px;
+            overflow: hidden;
+            border: 1px solid rgba(201, 168, 76, 0.3);
+        }
+        .map-iframe-wrap iframe {
+            display: block;
+            width: 100%;
+            height: 240px;
+            border: none;
+        }
+
+        .map-open-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            margin-top: 10px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.78rem;
+            color: #c9a84c;
+            text-decoration: none;
+        }
+        .map-open-link:hover { color: #1a2340; }
+
+        .map-pane { display: none; }
+        .map-pane.active { display: block; }
+
+        .warn-box {
+            display: flex;
+            gap: 8px;
+            align-items: flex-start;
+            background: rgba(255, 200, 100, 0.12);
+            border: 1px solid rgba(201, 168, 76, 0.3);
+            border-radius: 10px;
+            padding: 9px 13px;
+            margin-bottom: 12px;
+            font-size: 0.78rem;
+            color: #7a6020;
+            font-style: italic;
+        }
+
+        /* Destination badge */
+        .dest-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(26, 35, 64, 0.07);
+            border: 1px solid rgba(26, 35, 64, 0.12);
+            border-radius: 8px;
+            padding: 6px 12px;
+            margin-bottom: 12px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.82rem;
+            font-style: italic;
+            color: #1a2340;
+        }
+        .dest-badge strong {
+            font-style: normal;
+            font-weight: 700;
+        }
+
+        @media(max-width: 480px) {
+            #map-overlay { align-items: flex-end !important; padding: 0 !important; }
+            #map-card {
+                border-radius: 24px 24px 0 0 !important;
+                width: 100% !important;
+                max-height: 92vh;
+            }
+            .map-iframe-wrap iframe { height: 200px; }
+        }
+
+        /* ── RSVP OVERLAY ── */
         #rsvp-overlay {
             display: none;
             position: fixed;
@@ -339,11 +508,7 @@
             animation: cardIn 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
         }
 
-        .rsvp-emoji {
-            font-size: clamp(2rem, 6vw, 2.4rem);
-            margin-bottom: 12px;
-        }
-
+        .rsvp-emoji { font-size: clamp(2rem, 6vw, 2.4rem); margin-bottom: 12px; }
         .rsvp-title {
             font-family: 'Cormorant Garamond', serif;
             font-size: clamp(1.1rem, 4vw, 1.35rem);
@@ -352,26 +517,9 @@
             line-height: 1.5;
             margin-bottom: 8px;
         }
+        .rsvp-sub { font-size: clamp(0.72rem, 2.2vw, 0.8rem); color: #8a94a8; margin-bottom: 16px; letter-spacing: 0.5px; }
 
-        .rsvp-sub {
-            font-size: clamp(0.72rem, 2.2vw, 0.8rem);
-            color: #8a94a8;
-            margin-bottom: 16px;
-            letter-spacing: 0.5px;
-        }
-
-        /*
-      Layout 2 tầng:
-      - #btn-yes-wrap : hàng cố định ở dưới, luôn hiển thị
-      - #btn-arena    : khung bay của nút KHÔNG, nằm TRÊN nút CÓ
-                        overflow:hidden đảm bảo nút không bao giờ ra ngoài
-    */
-        #btn-yes-wrap {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-        }
-
+        #btn-yes-wrap { width: 100%; display: flex; justify-content: center; }
         #btn-yes {
             width: 60%;
             background: linear-gradient(135deg, #1a2340, #263266);
@@ -387,36 +535,19 @@
             transition: transform 0.15s, box-shadow 0.15s;
             white-space: nowrap;
         }
+        #btn-yes:hover { transform: scale(1.05); box-shadow: 0 6px 20px rgba(26, 35, 64, 0.25); }
 
-        #btn-yes:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 20px rgba(26, 35, 64, 0.25);
-        }
-
-        /*
-      #btn-arena: khung nút KHÔNG bay.
-      - Chiều cao lớn hơn để có nhiều chỗ bay hơn
-      - overflow:hidden = nút không bao giờ ra ngoài
-      - pointer-events:none trên bản thân arena (nút bên trong vẫn nhận event)
-      - Nằm TRƯỚC nút CÓ trong DOM → z-index cao hơn tự nhiên
-    */
         #btn-arena {
             position: relative;
             width: 100%;
             height: 220px;
             overflow: hidden;
             margin-bottom: 10px;
-            /* border: 1px dashed rgba(201,168,76,0.2); */
-            /* bỏ comment để debug */
         }
 
         #btn-no {
             position: absolute;
-            /* Vị trí ban đầu: góc phải dưới */
-            right: 0;
-            bottom: 8px;
-            left: auto;
-            top: auto;
+            right: 0; bottom: 8px; left: auto; top: auto;
             width: clamp(90px, 38%, 130px);
             background: #fff;
             color: #8a94a8;
@@ -428,7 +559,6 @@
             font-weight: 500;
             cursor: pointer;
             white-space: nowrap;
-            /* JS sẽ gán transition khi cần */
         }
 
         #troll-msg {
@@ -442,24 +572,14 @@
             opacity: 0;
         }
 
-        /* Màn cảm ơn */
-        .rsvp-screen {
-            display: none;
-        }
-
-        .thanks-emoji {
-            font-size: clamp(2.4rem, 7vw, 3rem);
-            margin-bottom: 16px;
-            animation: popIn 0.5s both;
-        }
-
+        .rsvp-screen { display: none; }
+        .thanks-emoji { font-size: clamp(2.4rem, 7vw, 3rem); margin-bottom: 16px; animation: popIn 0.5s both; }
         .thanks-title {
             font-family: 'Great Vibes', cursive;
             font-size: clamp(1.6rem, 5vw, 2rem);
             color: #1a2340;
             margin-bottom: 10px;
         }
-
         .thanks-body {
             font-family: 'Cormorant Garamond', serif;
             font-size: clamp(0.95rem, 3vw, 1.05rem);
@@ -468,7 +588,6 @@
             line-height: 1.7;
             margin-bottom: 24px;
         }
-
         .btn-close-yes {
             background: linear-gradient(135deg, #c9a84c, #e8cf82);
             color: #1a2340;
@@ -480,7 +599,6 @@
             font-size: clamp(0.82rem, 2.5vw, 0.9rem);
             cursor: pointer;
         }
-
         .btn-close-no {
             background: #f0f2f8;
             color: #5a6480;
@@ -494,28 +612,17 @@
         }
 
         @keyframes popIn {
-            from {
-                transform: scale(0.5);
-                opacity: 0;
-            }
-
-            to {
-                transform: scale(1);
-                opacity: 1;
-            }
+            from { transform: scale(0.5); opacity: 0; }
+            to   { transform: scale(1);   opacity: 1; }
+        }
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(18px); }
+            to   { opacity: 1; transform: translateY(0); }
         }
 
         @media(max-width:480px) {
-            #rsvp-overlay {
-                align-items: flex-end !important;
-                padding: 0 !important;
-            }
-
-            #rsvp-card {
-                border-radius: 24px 24px 0 0 !important;
-                width: 100% !important;
-                padding-bottom: 40px !important;
-            }
+            #rsvp-overlay { align-items: flex-end !important; padding: 0 !important; }
+            #rsvp-card { border-radius: 24px 24px 0 0 !important; width: 100% !important; padding-bottom: 40px !important; }
         }
     </style>
 </head>
@@ -541,19 +648,19 @@
             <div class="info-grid">
                 <div class="info-box">
                     <span class="icon">
-                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
                     </span>
                     <span class="value">10 / 05 / 2025</span>
                 </div>
                 <div class="info-box">
                     <span class="icon">
-                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 14.5"/></svg>
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 14.5"/></svg>
                     </span>
                     <span class="value">14:00 – 17:30</span>
                 </div>
                 <div class="info-box info-box--full">
                     <span class="icon">
-                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
                     </span>
                     <span class="value">Thư viện Tạ Quang Bửu<br />Đại học Bách Khoa Hà Nội</span>
                 </div>
@@ -569,27 +676,23 @@
     </article>
 
     <button id="rsvp-trigger" onclick="openPopup()">✉ Xác nhận tham dự</button>
+    <button id="map-trigger"  onclick="openMap()">🗺 Hướng dẫn đường đi</button>
 
+    <!-- ════════════════════════════════════════
+         RSVP OVERLAY
+    ════════════════════════════════════════ -->
     <div id="rsvp-overlay">
         <div id="rsvp-card">
-
             <div id="rsvp-question">
                 <div class="rsvp-emoji">🎓</div>
                 <p class="rsvp-title">Bạn có tham dự lễ tốt nghiệp không?</p>
                 <p class="rsvp-sub">Sự có mặt của bạn rất quan trọng 🥺</p>
-
-                <!--
-          Tầng 1: #btn-arena – nút KHÔNG bay trong này, tách biệt hoàn toàn với nút CÓ
-          Tầng 2: #btn-yes-wrap – nút CÓ cố định ở dưới, không bao giờ chồng lên
-        -->
                 <div id="btn-arena">
                     <button id="btn-no">Không</button>
                 </div>
-
                 <div id="btn-yes-wrap">
-                    <button id="btn-yes" onclick="showYes()"> Có, mình sẽ đến!</button>
+                    <button id="btn-yes" onclick="showYes()">Có, mình sẽ đến!</button>
                 </div>
-
                 <p id="troll-msg"></p>
             </div>
 
@@ -605,251 +708,352 @@
 
             <div id="rsvp-surrender" class="rsvp-screen">
                 <div class="thanks-emoji">😮‍💨</div>
-                <p class="thanks-title"
-                    style="font-family:'Great Vibes',cursive;font-size:clamp(1.5rem,5vw,1.9rem);color:#1a2340;margin-bottom:10px;">
-                    Thôi được rồi...</p>
-                <p class="thanks-body">Mình hiểu rồi 😔<br />Dù sao cũng cảm ơn vì đã đọc thiệp.<br />Nhớ mình nha! 🥹
-                </p>
+                <p class="thanks-title" style="font-family:'Great Vibes',cursive;font-size:clamp(1.5rem,5vw,1.9rem);color:#1a2340;margin-bottom:10px;">Thôi được rồi...</p>
+                <p class="thanks-body">Mình hiểu rồi 😔<br />Dù sao cũng cảm ơn vì đã đọc thiệp.<br />Nhớ mình nha! 🥹</p>
                 <button class="btn-close-no" onclick="closePopup()">Đóng</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ════════════════════════════════════════
+         MAP OVERLAY
+         Điểm đến: Thư viện Tạ Quang Bửu, ĐHBK HN
+         Tọa độ: 21.00540, 105.84300
+    ════════════════════════════════════════ -->
+    <div id="map-overlay">
+        <div id="map-card">
+
+            <div class="map-header">
+                <div class="map-header-left">
+                    <!-- NÚT QUAY LẠI THIỆP -->
+                    <button class="map-back" onclick="closeMap()">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+                        Quay lại thiệp
+                    </button>
+                </div>
+                <span class="map-header-title">Hướng dẫn đường đi</span>
+            </div>
+
+            <div class="map-tabs">
+                <button class="map-tab active" id="mtab-xemay" onclick="switchMapTab('xemay')">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="5.5" cy="17.5" r="2.5"/><circle cx="18.5" cy="17.5" r="2.5"/><path d="M8 17.5h7M15 6h2l2 4.5M9 6l1 5.5h5.5"/><path d="M3 9.5h4l2 8"/></svg>
+                    Xe máy
+                </button>
+                <button class="map-tab" id="mtab-oto" onclick="switchMapTab('oto')">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="9" width="22" height="9" rx="2"/><path d="M4 9l2-5h12l2 5"/><circle cx="7.5" cy="18.5" r="1.5"/><circle cx="16.5" cy="18.5" r="1.5"/></svg>
+                    Ô tô
+                </button>
+            </div>
+
+            <!-- XE MÁY -->
+            <div id="mpane-xemay" class="map-pane active">
+                <div class="map-body">
+                    <div class="dest-badge">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+                        Điểm đến: <strong>Thư viện Tạ Quang Bửu</strong>
+                    </div>
+
+                    <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:0.88rem;color:#8a94a8;margin:0 0 12px">Chọn cổng thuận đường nhất với bạn:</p>
+
+                    <!-- Cổng Trần Đại Nghĩa -->
+                    <div class="map-gate-info">
+                        <svg class="map-gate-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+                        <div>
+                            <span class="map-gate-name">Cổng Trần Đại Nghĩa</span>
+                            <span class="map-gate-addr">2 Trần Đại Nghĩa, Bạch Mai, Hà Nội</span>
+                        </div>
+                    </div>
+                    <ul class="map-steps">
+                        <li><span class="map-step-num">1</span>Vào cổng từ đường Trần Đại Nghĩa, rẽ trái sau cổng.</li>
+                        <li><span class="map-step-num">2</span>Đi theo trục D7-ITP hướng Hồ Tiên.</li>
+                        <li><span class="map-step-num">3</span>Thư viện Tạ Quang Bửu ở bên trái, gửi xe tại bãi D1/D6.</li>
+                    </ul>
+                    <!-- OSM iframe — điểm đến: thư viện TQB (21.0054, 105.8430) -->
+                    <div class="map-iframe-wrap">
+                        <iframe
+                            loading="lazy"
+                            src="https://www.openstreetmap.org/export/embed.html?bbox=105.8390%2C21.0030%2C105.8475%2C21.0080&layer=mapnik&marker=21.00540%2C105.84300"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <a class="map-open-link"
+                        href="https://www.google.com/maps/dir/2+Trần+Đại+Nghĩa,+Bạch+Mai,+Hà+Nội/Thư+viện+Tạ+Quang+Bửu,+Đại+học+Bách+Khoa+Hà+Nội/@21.0054,105.8430,17z"
+                        target="_blank">
+                        ↗ Mở chỉ đường trong Google Maps
+                    </a>
+
+                    <!-- Cổng Bắc -->
+                    <div class="map-gate-info" style="margin-top:20px">
+                        <svg class="map-gate-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+                        <div>
+                            <span class="map-gate-name">Cổng Bắc (Đại Cồ Việt)</span>
+                            <span class="map-gate-addr">Đại Cồ Việt, Bạch Mai, Hà Nội</span>
+                        </div>
+                    </div>
+                    <ul class="map-steps">
+                        <li><span class="map-step-num">1</span>Vào từ đường Đại Cồ Việt, đi thẳng vào trục chính C1→C5.</li>
+                        <li><span class="map-step-num">2</span>Rẽ trái xuống khu D, đi về phía Hồ Tiên.</li>
+                        <li><span class="map-step-num">3</span>Thư viện Tạ Quang Bửu ở bên phải, gửi xe tại bãi D1/D6.</li>
+                    </ul>
+                    <div class="map-iframe-wrap">
+                        <iframe
+                            loading="lazy"
+                            src="https://www.openstreetmap.org/export/embed.html?bbox=105.8390%2C21.0030%2C105.8475%2C21.0080&layer=mapnik&marker=21.00540%2C105.84300"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <a class="map-open-link"
+                        href="https://www.google.com/maps/dir/Cổng+Bắc+Đại+học+Bách+Khoa+Hà+Nội,+Đại+Cồ+Việt/Thư+viện+Tạ+Quang+Bửu,+Đại+học+Bách+Khoa+Hà+Nội/@21.0054,105.8430,17z"
+                        target="_blank">
+                        ↗ Mở chỉ đường trong Google Maps
+                    </a>
+                </div>
+            </div>
+
+            <!-- Ô TÔ -->
+            <div id="mpane-oto" class="map-pane">
+                <div class="map-body">
+                    <div class="dest-badge">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+                        Điểm đến: <strong>Thư viện Tạ Quang Bửu</strong>
+                    </div>
+
+                    <div class="warn-box">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:1px"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                        Ô tô chỉ được vào qua Cổng Parabol — cổng Bắc và Trần Đại Nghĩa không cho xe hơi vào.
+                    </div>
+
+                    <div class="map-gate-info">
+                        <svg class="map-gate-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+                        <div>
+                            <span class="map-gate-name">Cổng Parabol</span>
+                            <span class="map-gate-addr">2 Đ. Giải Phóng, Bạch Mai, Hà Nội</span>
+                        </div>
+                    </div>
+                    <ul class="map-steps">
+                        <li><span class="map-step-num">1</span>Vào từ đường Giải Phóng qua Cổng Parabol.</li>
+                        <li><span class="map-step-num">2</span>Rẽ phải, đi qua khu D2 → D6 → D8 hướng Hồ Tiên.</li>
+                        <li><span class="map-step-num">3</span>Thư viện Tạ Quang Bửu đối diện Hồ Tiên. Đỗ xe tại bãi D1.</li>
+                    </ul>
+                    <div class="map-iframe-wrap">
+                        <iframe
+                            loading="lazy"
+                            src="https://www.openstreetmap.org/export/embed.html?bbox=105.8390%2C21.0030%2C105.8475%2C21.0080&layer=mapnik&marker=21.00540%2C105.84300"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <a class="map-open-link"
+                        href="https://www.google.com/maps/dir/2+Đường+Giải+Phóng,+Bạch+Mai,+Hà+Nội/Thư+viện+Tạ+Quang+Bửu,+Đại+học+Bách+Khoa+Hà+Nội/@21.0054,105.8430,17z"
+                        target="_blank">
+                        ↗ Mở chỉ đường trong Google Maps
+                    </a>
+                </div>
             </div>
 
         </div>
     </div>
 
     <script>
-        (() => {
-            setTimeout(() => { document.getElementById('rsvp-trigger').style.opacity = '1'; }, 1500);
-            window.openPopup = () => { document.getElementById('rsvp-overlay').style.display = 'flex'; };
+    (() => {
+        // ── Hiện floating buttons sau 1.5s ──
+        setTimeout(() => {
+            document.getElementById('rsvp-trigger').style.opacity = '1';
+            document.getElementById('map-trigger').style.opacity  = '1';
+        }, 1500);
 
-            const arena = document.getElementById('btn-arena');
-            const btn = document.getElementById('btn-no');
-            const btnYes = document.getElementById('btn-yes');
+        // ── MAP ──────────────────────────────────────────────────────
+        window.openMap  = () => { document.getElementById('map-overlay').style.display = 'flex'; };
+        window.closeMap = () => { document.getElementById('map-overlay').style.display = 'none'; };
 
-            /*
-              State machine:
-                'idle'     → chưa click lần nào
-                'wobbled'  → đã click 1 lần, wobble xong
-                'fly'      → đang bay (click lần 2 trở đi)
-                'vanished' → đã biến mất (click trúng hoặc hover đủ lần)
-            */
-            let phase = 'idle';
-            let hoverCount = 0;
-            let isCooling = false;
-            // Lưu vị trí dạng % (resize-safe)
-            let savedLP = null, savedBP = null;
+        window.switchMapTab = (tab) => {
+            document.querySelectorAll('.map-tab').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.map-pane').forEach(p => p.classList.remove('active'));
+            document.getElementById('mtab-' + tab).classList.add('active');
+            document.getElementById('mpane-' + tab).classList.add('active');
+        };
 
-            const msgs = [
-                ' Ủa? Đến đây rồi à...',
-                ' Sao khó bắt vậy nhỉ?',
-                ' Cứ thử đi :))) ...',
-                '👀 Kiên trì dữ vậy trời!',
-                ' Mệt chưa?',
-                ' Noooooo ...',
-                ' Vẫn chưa bỏ cuộc à...',
-                ' Thôi tha cho mình đi...',
-                ' Bạn... ổn không?',
-            ];
+        // Click ngoài map card → đóng
+        document.getElementById('map-overlay').addEventListener('click', (e) => {
+            if (e.target === document.getElementById('map-overlay')) closeMap();
+        });
 
-            function showMsg(txt) {
-                const el = document.getElementById('troll-msg');
-                el.style.opacity = '0';
-                setTimeout(() => { el.textContent = txt; el.style.opacity = txt ? '1' : '0'; }, 150);
-            }
+        // ── RSVP ─────────────────────────────────────────────────────
+        window.openPopup = () => { document.getElementById('rsvp-overlay').style.display = 'flex'; };
 
-            /*
-              Tính vị trí ngẫu nhiên (px) TRONG arena.
-              Arena có overflow:hidden nên nút sẽ bị clip nếu tràn,
-              nhưng ta vẫn tính chặt để không bị clip.
-            */
-            function randomPos() {
-                const aw = arena.clientWidth;
-                const ah = arena.clientHeight;
-                const bw = btn.offsetWidth || 100;
-                const bh = btn.offsetHeight || 44;
-                const pad = 6;
+        const arena  = document.getElementById('btn-arena');
+        const btn    = document.getElementById('btn-no');
+        const btnYes = document.getElementById('btn-yes');
 
-                const maxL = Math.max(pad, aw - bw - pad);
-                const maxB = Math.max(pad, ah - bh - pad);
+        let phase      = 'idle';
+        let hoverCount = 0;
+        let isCooling  = false;
+        let savedLP    = null, savedBP = null;
 
-                return {
-                    left: pad + Math.random() * (maxL - pad),
-                    bottom: pad + Math.random() * (maxB - pad),
-                };
-            }
+        const msgs = [
+            ' Ủa? Đến đây rồi à...',
+            ' Sao khó bắt vậy nhỉ?',
+            ' Cứ thử đi :))) ...',
+            '👀 Kiên trì dữ vậy trời!',
+            ' Mệt chưa?',
+            ' Noooooo ...',
+            ' Vẫn chưa bỏ cuộc à...',
+            ' Thôi tha cho mình đi...',
+            ' Bạn... ổn không?',
+        ];
 
-            function applyPos(left, bottom, animate) {
-                btn.style.transition = animate
-                    ? 'left 0.22s cubic-bezier(0.34,1.56,0.64,1), bottom 0.22s cubic-bezier(0.34,1.56,0.64,1)'
-                    : 'none';
-                btn.style.left = left + 'px';
-                btn.style.bottom = bottom + 'px';
-                btn.style.right = 'auto';
-                btn.style.top = 'auto';
-            }
+        function showMsg(txt) {
+            const el = document.getElementById('troll-msg');
+            el.style.opacity = '0';
+            setTimeout(() => { el.textContent = txt; el.style.opacity = txt ? '1' : '0'; }, 150);
+        }
 
-            function savePos(left, bottom) {
-                savedLP = left / arena.clientWidth * 100;
-                savedBP = bottom / arena.clientHeight * 100;
-            }
-
-            function clampAndApply(animate) {
-                if (savedLP === null) return;
-                const aw = arena.clientWidth, ah = arena.clientHeight;
-                const bw = btn.offsetWidth || 100, bh = btn.offsetHeight || 44;
-                const pad = 6;
-                const l = Math.min(Math.max(pad, savedLP / 100 * aw), aw - bw - pad);
-                const b = Math.min(Math.max(pad, savedBP / 100 * ah), ah - bh - pad);
-                applyPos(l, b, animate);
-            }
-
-            window.addEventListener('resize', () => {
-                if (phase === 'fly' || phase === 'vanished') clampAndApply(false);
-            });
-
-            function teleport() {
-                const pos = randomPos();
-                applyPos(pos.left, pos.bottom, true);
-                savePos(pos.left, pos.bottom);
-            }
-
-            function wobble() {
-                const angles = [-8, 8, -6, 6, 0];
-                let i = 0;
-                btn.style.transition = 'transform 0.08s ease';
-                const tick = () => {
-                    if (i >= angles.length) { btn.style.transform = ''; return; }
-                    btn.style.transform = `rotate(${angles[i++]}deg)`;
-                    setTimeout(tick, 80);
-                };
-                tick();
-                showMsg(' Ủa? Bấm được không ta?');
-            }
-
-            function vanish() {
-                phase = 'vanished';
-                btn.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
-                btn.style.opacity = '0';
-                btn.style.transform = 'scale(0.15)';
-                btn.style.pointerEvents = 'none';
-            }
-
-            function restore() {
-                phase = 'fly';
-                clampAndApply(false);
-                requestAnimationFrame(() => {
-                    btn.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
-                    btn.style.opacity = '1';
-                    btn.style.transform = 'scale(1)';
-                    btn.style.pointerEvents = '';
-                });
-                showMsg('👀 Lại đây rồi...');
-            }
-
-            // ── CLICK nút KHÔNG ──────────────────────────────────────
-            btn.addEventListener('click', (e) => {
-                e.preventDefault();
-                e.stopPropagation();
-
-                if (phase === 'vanished') return;
-
-                if (phase === 'idle') {
-                    // Click 1: wobble
-                    phase = 'wobbled';
-                    wobble();
-                } else if (phase === 'wobbled') {
-                    // Click 2: bắt đầu bay
-                    phase = 'fly';
-                    teleport();
-                    showMsg('🏃 Bắt được thì bấm nha!');
-                } else if (phase === 'fly') {
-                    // Click trúng khi đang fly → biến mất luôn!
-                    vanish();
-                    showMsg(' Ồ! Bắt được rồi... nhưng nó biến mất rồi ');
-                }
-            });
-
-            // ── HOVER nút KHÔNG (chỉ active ở phase fly) ─────────────
-            function onNoEnter() {
-                if (phase !== 'fly') return;
-                if (isCooling) return;
-                isCooling = true;
-                setTimeout(() => { isCooling = false; }, 240);
-
-                hoverCount++;
-                teleport();
-
-                const idx = Math.min(Math.floor(hoverCount / 2), msgs.length - 1);
-                showMsg(msgs[idx]);
-
-                // Từ hover lần 5 trở đi: có xác suất biến mất
-                if (hoverCount >= 5) {
-                    const chance = Math.min(0.72, 0.15 + (hoverCount - 5) * 0.057);
-                    if (Math.random() < chance) {
-                        vanish();
-                        showMsg(' Biến mất rồi! Chỉ còn một lựa chọn thôi...');
-                    }
-                }
-            }
-
-            btn.addEventListener('mouseenter', onNoEnter);
-
-            // ── Hover nút CÓ → restore nút KHÔNG nếu đã vanished ─────
-            btnYes.addEventListener('mouseenter', () => { if (phase === 'vanished') restore(); });
-
-            // ── TOUCH mobile ──────────────────────────────────────────
-            btn.addEventListener('touchstart', (e) => {
-                e.preventDefault();
-                if (phase === 'idle') {
-                    phase = 'wobbled'; wobble();
-                } else if (phase === 'wobbled') {
-                    phase = 'fly'; teleport(); showMsg('🏃 Bắt được thì bấm nha!');
-                } else if (phase === 'fly') {
-                    // Touch trúng = click trúng → biến mất
-                    vanish();
-                    showMsg(' Ồ! Bắt được rồi... nhưng nó biến mất rồi ');
-                }
-            }, { passive: false });
-
-            // Trên mobile: touchmove vào arena = onNoEnter (mô phỏng hover)
-            arena.addEventListener('touchmove', (e) => {
-                if (phase !== 'fly') return;
-                const touch = e.touches[0];
-                const el = document.elementFromPoint(touch.clientX, touch.clientY);
-                if (el === btn || btn.contains(el)) { onNoEnter(); }
-            }, { passive: true });
-
-            btnYes.addEventListener('touchstart', () => {
-                if (phase === 'vanished') restore();
-            }, { passive: true });
-
-            // ── Reset ─────────────────────────────────────────────────
-            function resetBtn() {
-                btn.removeAttribute('style');
-                phase = 'idle'; hoverCount = 0; isCooling = false;
-                savedLP = savedBP = null;
-            }
-
-            window.showYes = () => {
-                document.getElementById('rsvp-question').style.display = 'none';
-                document.getElementById('rsvp-yes').style.display = 'block';
-                resetBtn();
+        function randomPos() {
+            const aw = arena.clientWidth, ah = arena.clientHeight;
+            const bw = btn.offsetWidth || 100, bh = btn.offsetHeight || 44;
+            const pad = 6;
+            return {
+                left:   pad + Math.random() * Math.max(pad, aw - bw - pad * 2),
+                bottom: pad + Math.random() * Math.max(pad, ah - bh - pad * 2),
             };
+        }
 
-            window.closePopup = () => {
-                document.getElementById('rsvp-overlay').style.display = 'none';
-                document.getElementById('rsvp-question').style.display = 'block';
-                document.getElementById('rsvp-yes').style.display = 'none';
-                document.getElementById('rsvp-surrender').style.display = 'none';
-                resetBtn();
-                showMsg('');
+        function applyPos(left, bottom, animate) {
+            btn.style.transition = animate
+                ? 'left 0.22s cubic-bezier(0.34,1.56,0.64,1), bottom 0.22s cubic-bezier(0.34,1.56,0.64,1)'
+                : 'none';
+            btn.style.left   = left   + 'px';
+            btn.style.bottom = bottom + 'px';
+            btn.style.right  = 'auto';
+            btn.style.top    = 'auto';
+        }
+
+        function savePos(l, b) {
+            savedLP = l / arena.clientWidth  * 100;
+            savedBP = b / arena.clientHeight * 100;
+        }
+
+        function clampAndApply(animate) {
+            if (savedLP === null) return;
+            const aw = arena.clientWidth, ah = arena.clientHeight;
+            const bw = btn.offsetWidth || 100, bh = btn.offsetHeight || 44;
+            const pad = 6;
+            const l = Math.min(Math.max(pad, savedLP / 100 * aw), aw - bw - pad);
+            const b = Math.min(Math.max(pad, savedBP / 100 * ah), ah - bh - pad);
+            applyPos(l, b, animate);
+        }
+
+        window.addEventListener('resize', () => {
+            if (phase === 'fly' || phase === 'vanished') clampAndApply(false);
+        });
+
+        function teleport() {
+            const pos = randomPos();
+            applyPos(pos.left, pos.bottom, true);
+            savePos(pos.left, pos.bottom);
+        }
+
+        function wobble() {
+            const angles = [-8, 8, -6, 6, 0];
+            let i = 0;
+            btn.style.transition = 'transform 0.08s ease';
+            const tick = () => {
+                if (i >= angles.length) { btn.style.transform = ''; return; }
+                btn.style.transform = `rotate(${angles[i++]}deg)`;
+                setTimeout(tick, 80);
             };
+            tick();
+            showMsg(' Ủa? Bấm được không ta?');
+        }
 
-            document.getElementById('rsvp-overlay').addEventListener('click', (e) => {
-                if (e.target === document.getElementById('rsvp-overlay')) closePopup();
+        function vanish() {
+            phase = 'vanished';
+            btn.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+            btn.style.opacity    = '0';
+            btn.style.transform  = 'scale(0.15)';
+            btn.style.pointerEvents = 'none';
+        }
+
+        function restore() {
+            phase = 'fly';
+            clampAndApply(false);
+            requestAnimationFrame(() => {
+                btn.style.transition    = 'opacity 0.4s ease, transform 0.4s ease';
+                btn.style.opacity       = '1';
+                btn.style.transform     = 'scale(1)';
+                btn.style.pointerEvents = '';
             });
-        })();
+            showMsg('👀 Lại đây rồi...');
+        }
+
+        btn.addEventListener('click', (e) => {
+            e.preventDefault(); e.stopPropagation();
+            if (phase === 'vanished') return;
+            if (phase === 'idle')     { phase = 'wobbled'; wobble(); }
+            else if (phase === 'wobbled') { phase = 'fly'; teleport(); showMsg('🏃 Bắt được thì bấm nha!'); }
+            else if (phase === 'fly')  { vanish(); showMsg(' Ồ! Bắt được rồi... nhưng nó biến mất rồi '); }
+        });
+
+        function onNoEnter() {
+            if (phase !== 'fly' || isCooling) return;
+            isCooling = true;
+            setTimeout(() => { isCooling = false; }, 240);
+            hoverCount++;
+            teleport();
+            const idx = Math.min(Math.floor(hoverCount / 2), msgs.length - 1);
+            showMsg(msgs[idx]);
+            if (hoverCount >= 5) {
+                const chance = Math.min(0.72, 0.15 + (hoverCount - 5) * 0.057);
+                if (Math.random() < chance) { vanish(); showMsg(' Biến mất rồi! Chỉ còn một lựa chọn thôi...'); }
+            }
+        }
+
+        btn.addEventListener('mouseenter', onNoEnter);
+        btnYes.addEventListener('mouseenter', () => { if (phase === 'vanished') restore(); });
+
+        btn.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            if (phase === 'idle')         { phase = 'wobbled'; wobble(); }
+            else if (phase === 'wobbled') { phase = 'fly'; teleport(); showMsg('🏃 Bắt được thì bấm nha!'); }
+            else if (phase === 'fly')     { vanish(); showMsg(' Ồ! Bắt được rồi... nhưng nó biến mất rồi '); }
+        }, { passive: false });
+
+        arena.addEventListener('touchmove', (e) => {
+            if (phase !== 'fly') return;
+            const touch = e.touches[0];
+            const el = document.elementFromPoint(touch.clientX, touch.clientY);
+            if (el === btn || btn.contains(el)) onNoEnter();
+        }, { passive: true });
+
+        btnYes.addEventListener('touchstart', () => {
+            if (phase === 'vanished') restore();
+        }, { passive: true });
+
+        function resetBtn() {
+            btn.removeAttribute('style');
+            phase = 'idle'; hoverCount = 0; isCooling = false;
+            savedLP = savedBP = null;
+        }
+
+        window.showYes = () => {
+            document.getElementById('rsvp-question').style.display = 'none';
+            document.getElementById('rsvp-yes').style.display = 'block';
+            resetBtn();
+        };
+
+        window.closePopup = () => {
+            document.getElementById('rsvp-overlay').style.display = 'none';
+            document.getElementById('rsvp-question').style.display = 'block';
+            document.getElementById('rsvp-yes').style.display      = 'none';
+            document.getElementById('rsvp-surrender').style.display = 'none';
+            resetBtn();
+            showMsg('');
+        };
+
+        document.getElementById('rsvp-overlay').addEventListener('click', (e) => {
+            if (e.target === document.getElementById('rsvp-overlay')) closePopup();
+        });
+    })();
     </script>
 
 </body>
-
 </html>
